@@ -78,21 +78,27 @@
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Mk0.GUI.Banner">
       <HintPath>..\Mk0.GUI.Banner.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Mk0.Tools.Calculation">
       <HintPath>..\Mk0.Tools.Calculation.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Mk0.Tools.Images">
       <HintPath>..\Mk0.Tools.Images.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Mk0.Tools.Randomization">
       <HintPath>..\Mk0.Tools.Randomization.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Mk0.Tools.SingleInstance">
       <HintPath>..\Mk0.Tools.SingleInstance.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="RubberBandControl">
       <HintPath>..\RubberBandControl.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -168,6 +174,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dll\Mk0.GUI.Banner.dll" />
+    <Content Include="dll\Mk0.Tools.Calculation.dll" />
+    <Content Include="dll\Mk0.Tools.Images.dll" />
+    <Content Include="dll\Mk0.Tools.Randomization.dll" />
+    <Content Include="dll\Mk0.Tools.SingleInstance.dll" />
+    <Content Include="dll\RubberBandControl.dll" />
     <Content Include="Resources\bmp.ico" />
     <Content Include="Resources\gif.ico" />
     <Content Include="image.ico" />
