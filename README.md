@@ -19,11 +19,11 @@ This software has the following features:
 + zoom modes (and manual zoom)
 + change history with the possibility to undo changes (only for moving images - not for rotating, cutting, deleting...)
 + working with hotkeys
- + DEL - deletes image
- + LEFT or DOWN - previous image
- + RIGHT or UP - next image
- + F2 - cut image
- + F3 - edit image
- + F4 - open file location in file explorer
- + F5 - show image informations
- + BACKSPACE - undo last change
+  + DEL - deletes image
+  + LEFT or DOWN - previous image
+  + RIGHT or UP - next image
+  + F2 - cut image
+  + F3 - edit image
+  + F4 - open file location in file explorer
+  + F5 - show image informations
+  + BACKSPACE - undo last change
