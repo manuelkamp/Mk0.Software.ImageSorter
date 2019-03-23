@@ -7,7 +7,7 @@
     <ProjectGuid>{1CCA2FD2-7F83-4CE6-8228-5267038D41A5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Image_Sorter</RootNamespace>
+    <RootNamespace>Mk0.Software.ImageSorter</RootNamespace>
     <AssemblyName>Image Sorter</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -84,6 +84,9 @@
       <HintPath>..\Mk0.Tools.Calculation.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Mk0.Tools.ImageCropper">
+      <HintPath>dll\Mk0.Tools.ImageCropper.dll</HintPath>
+    </Reference>
     <Reference Include="Mk0.Tools.Images">
       <HintPath>..\Mk0.Tools.Images.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
@@ -96,20 +99,13 @@
       <HintPath>..\Mk0.Tools.SingleInstance.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
-    <Reference Include="RubberBandControl">
-      <HintPath>..\RubberBandControl.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cropper.cs">
@@ -176,10 +172,10 @@
   <ItemGroup>
     <Content Include="dll\Mk0.GUI.Banner.dll" />
     <Content Include="dll\Mk0.Tools.Calculation.dll" />
+    <Content Include="dll\Mk0.Tools.ImageCropper.dll" />
     <Content Include="dll\Mk0.Tools.Images.dll" />
     <Content Include="dll\Mk0.Tools.Randomization.dll" />
     <Content Include="dll\Mk0.Tools.SingleInstance.dll" />
-    <Content Include="dll\RubberBandControl.dll" />
     <Content Include="Resources\bmp.ico" />
     <Content Include="Resources\gif.ico" />
     <Content Include="image.ico" />

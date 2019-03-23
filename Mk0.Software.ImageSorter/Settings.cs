@@ -25,7 +25,7 @@ namespace Mk0.Software.ImageSorter
             checkBoxSingleInstance.Checked = Properties.Settings.Default.singleInstance;
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void ButtonChangeTargetPath_Click(object sender, EventArgs e)
         {
             DialogResult result = folderBrowserDialog.ShowDialog();
             if (result == DialogResult.OK)
@@ -39,6 +39,12 @@ namespace Mk0.Software.ImageSorter
         private void CheckBoxSingleInstance_CheckedChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.singleInstance = checkBoxSingleInstance.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void CheckBoxFileAssociation_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.fileAssociation = checkBoxFileAssociation.Checked;
             Properties.Settings.Default.Save();
         }
     }

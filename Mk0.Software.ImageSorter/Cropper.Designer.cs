@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.rubberBand1 = new RickApps.CropImage.RubberBand();
+            this.rubberBand1 = new Mk0.Tools.ImageCropper.RubberBand();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -65,6 +65,7 @@
             this.ClientSize = new System.Drawing.Size(800, 564);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rubberBand1);
+            this.Cursor = System.Windows.Forms.Cursors.Cross;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(816, 603);
@@ -80,7 +81,7 @@
 
         #endregion
 
-        private RickApps.CropImage.RubberBand rubberBand1;
+        private Mk0.Tools.ImageCropper.RubberBand rubberBand1;
         private System.Windows.Forms.Label label1;
     }
 }

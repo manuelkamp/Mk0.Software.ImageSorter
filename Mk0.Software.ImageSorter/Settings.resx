@@ -120,4 +120,19 @@
   <metadata name="folderBrowserDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Der Zielpfad legt fest, wohin die Bilder verschoben werden sollen. Im Zielpfad sollten Unterordner
+vorhanden sein, welche dann im ImageSorter als Ziel zum Verschieben verfügbar sind. Der Zielpfad
+wird beim nächsten Start von ImageSorter wieder automatisch ausgewählt.</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Mit der Option Einzelinstanz legen sie fest, dass der ImageSorter nur ein Mal geöffnet sein kann. Wenn
+sie weitere Bilder öffnen, öffnen sich diese dann im selben Fenster. Wenn diese Option deaktiviert ist,
+öffnen sich jedes Bild in einem eigenen Fenster.</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Wenn sie die Dateizuordnung aktivieren, werden Bildtypen mit ImageSorter verbunden. Sie können
+dann Bilder mittels Doppelklick bzw. rechter Maustaste "Öffnen mit..." mit dem ImageSorter direkt
+öffnen.</value>
+  </data>
 </root>
