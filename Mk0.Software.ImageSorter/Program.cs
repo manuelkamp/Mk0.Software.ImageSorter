@@ -14,7 +14,7 @@ namespace Mk0.Software.ImageSorter
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            SingleApplication.Run(args.Length == 0 ? new Main(string.Empty) : new Main(args[0]), Mk0.Software.ImageSorter.Properties.Settings.Default.singleInstance);
+            SingleApplication.Run(args.Length == 0 ? new Main(string.Empty) : new Main(args[0]), Properties.Settings.Default.singleInstance);
         }
     }
 }
