@@ -6,7 +6,6 @@ using Mk0.Tools.Randomization;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -41,19 +40,46 @@ namespace Mk0.Software.ImageSorter
         private string zoomType = "auto";
         private string startuppath;
         private string startupimage;
+        public string[] Args;
 
-        public Main(string startuppath)
+        public Main()
         {
             InitializeComponent();
             banner = new Banner(components, panel3, pictureBox1, pictureBox2, label1, label2);
             pictureBox.Cursor = grabCursor;
             DoubleBuffered = true;
-            if (!string.IsNullOrEmpty(startuppath) && File.Exists(startuppath))
-            {
-                this.startuppath = Path.GetDirectoryName(startuppath);
-                startupimage = Path.GetFileName(startuppath);
-            }
             SetDefaultPath();
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            if (Args != null)
+            {
+                ProcessParameters(null, Args);
+                Args = null;
+            }
+        }
+
+        public delegate void ProcessParametersDelegate(object sender, string[] args);
+        public void ProcessParameters(object sender, string[] args)
+        {
+            if (args != null && args.Length != 0)
+            {
+                if (!string.IsNullOrEmpty(args[0]) && File.Exists(args[0]))
+                {
+                    startuppath = Path.GetDirectoryName(args[0]);
+                    startupimage = Path.GetFileName(args[0]);
+                    if (!string.IsNullOrEmpty(startuppath) && File.Exists(startuppath))
+                    {
+                        startuppath = Path.GetDirectoryName(startuppath);
+                        startupimage = Path.GetFileName(startuppath);
+                    }
+                    SetDefaultPath();
+                    SearchImages();
+                    CountPicsInPath();
+                    LoadPicture(GetImageIndex(Path.Combine(startuppath, startupimage)));
+                }
+            }
         }
 
         /// <summary>
