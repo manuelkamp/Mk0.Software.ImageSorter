@@ -53,8 +53,6 @@
             this.buttonRotate270 = new System.Windows.Forms.Button();
             this.buttonMirrorHorizontal = new System.Windows.Forms.Button();
             this.buttonMirrorVertikal = new System.Windows.Forms.Button();
-            this.buttonZoom100 = new System.Windows.Forms.Button();
-            this.buttonZoomAuto = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelNoImages = new System.Windows.Forms.Label();
             this.labelZoom = new System.Windows.Forms.Label();
@@ -64,6 +62,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.comboBoxZoom = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -333,30 +333,6 @@
             this.buttonMirrorVertikal.UseVisualStyleBackColor = true;
             this.buttonMirrorVertikal.Click += new System.EventHandler(this.ImageMirror);
             // 
-            // buttonZoom100
-            // 
-            this.buttonZoom100.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonZoom100.Location = new System.Drawing.Point(712, 538);
-            this.buttonZoom100.Name = "buttonZoom100";
-            this.buttonZoom100.Size = new System.Drawing.Size(100, 23);
-            this.buttonZoom100.TabIndex = 11;
-            this.buttonZoom100.Tag = "100";
-            this.buttonZoom100.Text = "Zoom 100%";
-            this.buttonZoom100.UseVisualStyleBackColor = true;
-            this.buttonZoom100.Click += new System.EventHandler(this.Zoom);
-            // 
-            // buttonZoomAuto
-            // 
-            this.buttonZoomAuto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonZoomAuto.Location = new System.Drawing.Point(818, 538);
-            this.buttonZoomAuto.Name = "buttonZoomAuto";
-            this.buttonZoomAuto.Size = new System.Drawing.Size(100, 23);
-            this.buttonZoomAuto.TabIndex = 12;
-            this.buttonZoomAuto.Tag = "auto";
-            this.buttonZoomAuto.Text = "Zoom Auto";
-            this.buttonZoomAuto.UseVisualStyleBackColor = true;
-            this.buttonZoomAuto.Click += new System.EventHandler(this.Zoom);
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -449,16 +425,41 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // comboBoxZoom
+            // 
+            this.comboBoxZoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxZoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxZoom.FormattingEnabled = true;
+            this.comboBoxZoom.Items.AddRange(new object[] {
+            "Auto",
+            "Vollbild",
+            "Original"});
+            this.comboBoxZoom.Location = new System.Drawing.Point(799, 538);
+            this.comboBoxZoom.Name = "comboBoxZoom";
+            this.comboBoxZoom.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxZoom.TabIndex = 14;
+            this.comboBoxZoom.SelectedIndexChanged += new System.EventHandler(this.ComboBoxZoom_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(759, 543);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(34, 13);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Zoom";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(967, 566);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.comboBoxZoom);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.labelZoom);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.buttonZoomAuto);
-            this.Controls.Add(this.buttonZoom100);
             this.Controls.Add(this.buttonMirrorVertikal);
             this.Controls.Add(this.buttonMirrorHorizontal);
             this.Controls.Add(this.buttonRotate270);
@@ -472,7 +473,7 @@
             this.MinimumSize = new System.Drawing.Size(983, 605);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Image Sorter v1.28 | © 2015-2019 by manuelkamper.com";
+            this.Text = "Image Sorter v1.29 | © 2015-2019 by manuelkamper.com";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             this.Shown += new System.EventHandler(this.Main_Shown);
@@ -513,8 +514,6 @@
         private System.Windows.Forms.Button buttonRotate270;
         private System.Windows.Forms.Button buttonMirrorHorizontal;
         private System.Windows.Forms.Button buttonMirrorVertikal;
-        private System.Windows.Forms.Button buttonZoom100;
-        private System.Windows.Forms.Button buttonZoomAuto;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelZoom;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
@@ -532,6 +531,8 @@
         private System.Windows.Forms.Button buttonQuellPfad;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.Label labelZielPath;
+        private System.Windows.Forms.ComboBox comboBoxZoom;
+        private System.Windows.Forms.Label label3;
     }
 }
 

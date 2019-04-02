@@ -37,7 +37,7 @@ namespace Mk0.Software.ImageSorter
         private Thread folderThread;
         private bool threadIsRunning = false;
         private Banner banner;
-        private string zoomType = "auto";
+        //private string zoomType = "auto";
         private string startuppath;
         private string startupimage;
         public string[] Args;
@@ -49,6 +49,7 @@ namespace Mk0.Software.ImageSorter
             pictureBox.Cursor = grabCursor;
             DoubleBuffered = true;
             SetDefaultPath();
+            comboBoxZoom.SelectedIndex = Properties.Settings.Default.zoom;
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -401,8 +402,7 @@ namespace Mk0.Software.ImageSorter
             buttonRotate180.Enabled = enabled;
             buttonRotate270.Enabled = enabled;
             buttonRotate90.Enabled = enabled;
-            buttonZoom100.Enabled = enabled;
-            buttonZoomAuto.Enabled = enabled;
+            comboBoxZoom.Enabled = enabled;
             buttonJumpOver.Enabled = enabled;
             labelNoImages.Visible = !enabled;
         }
@@ -672,36 +672,47 @@ namespace Mk0.Software.ImageSorter
         }
 
         /// <summary>
-        /// Zoom-Optionen für Buttons
+        /// Zoom-Optionen
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Zoom(object sender, EventArgs e)
+        private void Zoom()
         {
-            Button btn = (Button)sender;
-            string zoom = btn.Tag.ToString();
+            string zoom = comboBoxZoom.SelectedItem.ToString();
 
-            if (zoom == "100")
+            if (zoom == "Original")
             {
-                zoomType = "100";
-                buttonZoom100.Font = new Font(buttonZoom100.Font, FontStyle.Bold);
-                buttonZoomAuto.Font = new Font(buttonZoomAuto.Font, FontStyle.Regular);
                 pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
                 pictureBox.Size = new Size(pictureBox.Image.Width, pictureBox.Image.Height);
                 if (pictureBox.Image.Width > panel1.Width) { pictureBox.Left = (panel1.Width / 2) - (pictureBox.Width / 2); } else { pictureBox.Left = (panel1.Width / 2) - (pictureBox.Image.Width / 2); }
                 if (pictureBox.Image.Height > panel1.Height) { pictureBox.Top = (panel1.Height / 2) - (pictureBox.Height / 2); } else { pictureBox.Top = (panel1.Height / 2) - (pictureBox.Image.Height / 2); }
                 moveable = true;
             }
-            else if (zoom == "auto")
+            else if (zoom == "Vollbild")
             {
-                zoomType = "auto";
-                buttonZoom100.Font = new Font(buttonZoom100.Font, FontStyle.Regular);
-                buttonZoomAuto.Font = new Font(buttonZoomAuto.Font, FontStyle.Bold);
                 pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
                 pictureBox.Size = new Size(panel1.Width, panel1.Height);
                 pictureBox.Top = 0;
                 pictureBox.Left = 0;
                 moveable = false;
+            }
+            else if (zoom == "Auto")
+            {
+                pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                if(pictureBox.Image.Width>panel1.Width || pictureBox.Image.Height>panel1.Height)
+                {
+                    pictureBox.Size = new Size(panel1.Width, panel1.Height);
+                    pictureBox.Top = 0;
+                    pictureBox.Left = 0;
+                    moveable = false;
+                }
+                else
+                {
+                    pictureBox.Size = new Size(pictureBox.Image.Width, pictureBox.Image.Height);
+                    if (pictureBox.Image.Width > panel1.Width) { pictureBox.Left = (panel1.Width / 2) - (pictureBox.Width / 2); } else { pictureBox.Left = (panel1.Width / 2) - (pictureBox.Image.Width / 2); }
+                    if (pictureBox.Image.Height > panel1.Height) { pictureBox.Top = (panel1.Height / 2) - (pictureBox.Height / 2); } else { pictureBox.Top = (panel1.Height / 2) - (pictureBox.Image.Height / 2); }
+                    moveable = true;
+                }
             }
             else
             {
@@ -855,11 +866,7 @@ namespace Mk0.Software.ImageSorter
         /// <param name="e"></param>
         private void PictureBox_LoadCompleted(object sender, AsyncCompletedEventArgs e)
         {
-            Button b = new Button
-            {
-                Tag = zoomType
-            };
-            Zoom(b, null);
+            Zoom();
         }
 
         /// <summary>
@@ -1047,11 +1054,7 @@ namespace Mk0.Software.ImageSorter
         {
             try
             {
-                Button b = new Button
-                {
-                    Tag = zoomType
-                };
-                Zoom(b, null);
+                Zoom();
             }
             catch (Exception)
             {
@@ -1139,6 +1142,22 @@ namespace Mk0.Software.ImageSorter
             CountPicsInPath();
             LoadPicture(0);
             ResetUndo();
+        }
+
+        /// <summary>
+        /// Zoom-Combobox geändert
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ComboBoxZoom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.zoom = comboBoxZoom.SelectedIndex;
+            Properties.Settings.Default.Save();
+
+            if(pictureBox.Image != null)
+            {
+                Zoom();
+            }
         }
     }
 }
