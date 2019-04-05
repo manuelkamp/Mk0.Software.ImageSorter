@@ -1,9 +1,5 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Mk0.Tools.FileAssociaton
 {
@@ -22,7 +18,8 @@ namespace Mk0.Tools.FileAssociaton
                     extension,
                     progId,
                     fileTypeDescription,
-                    applicationFilePath);
+                    applicationFilePath,
+                    iconPath);
 
             if (madeChanges)
             {
@@ -40,12 +37,14 @@ namespace Mk0.Tools.FileAssociaton
             //add or update reg
         }
 
-        private static bool SetAssociation(string extension, string progId, string fileTypeDescription, string applicationFilePath)
+        private static bool SetAssociation(string extension, string progId, string fileTypeDescription, string applicationFilePath, string iconPath)
         {
+            //todo add file assoc icon
             bool madeChanges = false;
             madeChanges |= SetKeyDefaultValue(@"Software\Classes\" + extension, progId);
             madeChanges |= SetKeyDefaultValue(@"Software\Classes\" + progId, fileTypeDescription);
             madeChanges |= SetKeyDefaultValue($@"Software\Classes\{progId}\shell\open\command", "\"" + applicationFilePath + "\" \"%1\"");
+            madeChanges |= SetKeyDefaultValue($@"Software\Classes\{progId}\DefaultIcon", "\"" + iconPath + "\"");
             return madeChanges;
         }
 

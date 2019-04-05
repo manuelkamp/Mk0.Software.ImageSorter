@@ -320,24 +320,24 @@ namespace Mk0.Software.ImageSorter
             if (Properties.Settings.Default.fileAssociation)
             {
                 ExtractAssocIcons();
-                FileAssociation.Add("Image_Sorter", ".jpg", Application.ExecutablePath, "JPG Bild", $@"{Application.StartupPath}\AssocIcons\jpg.ico");
-                FileAssociation.Add("Image_Sorter", ".png", Application.ExecutablePath, "PNG Bild", $@"{Application.StartupPath}\AssocIcons\png.ico");
-                FileAssociation.Add("Image_Sorter", ".gif", Application.ExecutablePath, "GIF Bild", $@"{Application.StartupPath}\AssocIcons\gif.ico");
-                FileAssociation.Add("Image_Sorter", ".jpeg", Application.ExecutablePath, "JPEG Bild", $@"{Application.StartupPath}\AssocIcons\jpeg.ico");
-                FileAssociation.Add("Image_Sorter", ".bmp", Application.ExecutablePath, "BMP Bild", $@"{Application.StartupPath}\AssocIcons\bmp.ico");
-                FileAssociation.Add("Image_Sorter", ".tif", Application.ExecutablePath, "TIF Bild", $@"{Application.StartupPath}\AssocIcons\tif.ico");
-                FileAssociation.Add("Image_Sorter", ".tiff", Application.ExecutablePath, "TIFF Bild", $@"{Application.StartupPath}\AssocIcons\tiff.ico");
+                FileAssociation.Add("Image_Sorter_JPG", ".jpg", Application.ExecutablePath, "JPG Bild", $@"{Application.StartupPath}\AssocIcons\jpg.ico");
+                FileAssociation.Add("Image_Sorter_PNG", ".png", Application.ExecutablePath, "PNG Bild", $@"{Application.StartupPath}\AssocIcons\png.ico");
+                FileAssociation.Add("Image_Sorter_GIF", ".gif", Application.ExecutablePath, "GIF Bild", $@"{Application.StartupPath}\AssocIcons\gif.ico");
+                FileAssociation.Add("Image_Sorter_JPEG", ".jpeg", Application.ExecutablePath, "JPEG Bild", $@"{Application.StartupPath}\AssocIcons\jpeg.ico");
+                FileAssociation.Add("Image_Sorter_BMP", ".bmp", Application.ExecutablePath, "BMP Bild", $@"{Application.StartupPath}\AssocIcons\bmp.ico");
+                FileAssociation.Add("Image_Sorter_TIF", ".tif", Application.ExecutablePath, "TIF Bild", $@"{Application.StartupPath}\AssocIcons\tif.ico");
+                FileAssociation.Add("Image_Sorter_TIFF", ".tiff", Application.ExecutablePath, "TIFF Bild", $@"{Application.StartupPath}\AssocIcons\tiff.ico");
             }
             else
             {
                 Directory.Delete($@"{Application.StartupPath}\AssocIcons", true);
-                FileAssociation.Remove("Image_Sorter", ".jpg", Application.ExecutablePath, "JPG Bild", $@"{Application.StartupPath}\AssocIcons\jpg.ico");
-                FileAssociation.Remove("Image_Sorter", ".png", Application.ExecutablePath, "PNG Bild", $@"{Application.StartupPath}\AssocIcons\png.ico");
-                FileAssociation.Remove("Image_Sorter", ".gif", Application.ExecutablePath, "GIF Bild", $@"{Application.StartupPath}\AssocIcons\gif.ico");
-                FileAssociation.Remove("Image_Sorter", ".jpeg", Application.ExecutablePath, "JPEG Bild", $@"{Application.StartupPath}\AssocIcons\jpeg.ico");
-                FileAssociation.Remove("Image_Sorter", ".bmp", Application.ExecutablePath, "BMP Bild", $@"{Application.StartupPath}\AssocIcons\bmp.ico");
-                FileAssociation.Remove("Image_Sorter", ".tif", Application.ExecutablePath, "TIF Bild", $@"{Application.StartupPath}\AssocIcons\tif.ico");
-                FileAssociation.Remove("Image_Sorter", ".tiff", Application.ExecutablePath, "TIFF Bild", $@"{Application.StartupPath}\AssocIcons\tiff.ico");
+                FileAssociation.Remove("Image_Sorter_JPG", ".jpg", Application.ExecutablePath, "JPG Bild", $@"{Application.StartupPath}\AssocIcons\jpg.ico");
+                FileAssociation.Remove("Image_Sorter_PNG", ".png", Application.ExecutablePath, "PNG Bild", $@"{Application.StartupPath}\AssocIcons\png.ico");
+                FileAssociation.Remove("Image_Sorter_GIF", ".gif", Application.ExecutablePath, "GIF Bild", $@"{Application.StartupPath}\AssocIcons\gif.ico");
+                FileAssociation.Remove("Image_Sorter_JPEG", ".jpeg", Application.ExecutablePath, "JPEG Bild", $@"{Application.StartupPath}\AssocIcons\jpeg.ico");
+                FileAssociation.Remove("Image_Sorter_BMP", ".bmp", Application.ExecutablePath, "BMP Bild", $@"{Application.StartupPath}\AssocIcons\bmp.ico");
+                FileAssociation.Remove("Image_Sorter_TIF", ".tif", Application.ExecutablePath, "TIF Bild", $@"{Application.StartupPath}\AssocIcons\tif.ico");
+                FileAssociation.Remove("Image_Sorter_TIFF", ".tiff", Application.ExecutablePath, "TIFF Bild", $@"{Application.StartupPath}\AssocIcons\tiff.ico");
             }
 
             CheckSubfolders();
