@@ -29,17 +29,16 @@ namespace Mk0.Tools.FileAssociaton
 
         public static void Remove(string progId, string extension, string applicationFilePath, string fileTypeDescription, string iconPath)
         {
-            //remove reg
+            //remove reg todo
         }
 
         public static void Check(string progId, string extension, string applicationFilePath, string fileTypeDescription, string iconPath)
         {
-            //add or update reg
+            //add or update reg todo
         }
 
         private static bool SetAssociation(string extension, string progId, string fileTypeDescription, string applicationFilePath, string iconPath)
         {
-            //todo add file assoc icon
             bool madeChanges = false;
             madeChanges |= SetKeyDefaultValue(@"Software\Classes\" + extension, progId);
             madeChanges |= SetKeyDefaultValue(@"Software\Classes\" + progId, fileTypeDescription);

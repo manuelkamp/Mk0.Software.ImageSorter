@@ -51,6 +51,8 @@ namespace Mk0.Software.ImageSorter
             DoubleBuffered = true;
             SetDefaultPath();
             comboBoxZoom.SelectedIndex = Properties.Settings.Default.zoom;
+
+            //todo file assoc prüfen
         }
 
         private void Main_Load(object sender, EventArgs e)
