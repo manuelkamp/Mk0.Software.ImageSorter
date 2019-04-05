@@ -31,15 +31,14 @@ namespace Mk0.Software.ImageSorter
         private bool moving;
         private bool moveable = false;
         private Point startLocation; //verschieben
-        private Cursor grabCursor = new Cursor(new MemoryStream(Properties.Resources.grab));
-        private Cursor grabbingCursor = new Cursor(new MemoryStream(Properties.Resources.grabbing));
+        private Cursor grabCursor = new Cursor(new MemoryStream(Resources.grab));
+        private Cursor grabbingCursor = new Cursor(new MemoryStream(Resources.grabbing));
         private double xFaktor = 0.0;
         private double yFaktor = 0.0;
         private static object locker = new object();
         private Thread folderThread;
         private bool threadIsRunning = false;
         private Banner banner;
-        //private string zoomType = "auto";
         private string startuppath;
         private string startupimage;
         public string[] Args;
