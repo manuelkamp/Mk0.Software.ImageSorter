@@ -114,6 +114,7 @@
     <Compile Include="Cropper.Designer.cs">
       <DependentUpon>Cropper.cs</DependentUpon>
     </Compile>
+    <Compile Include="FileAssociation.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

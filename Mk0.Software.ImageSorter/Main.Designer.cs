@@ -471,6 +471,7 @@
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(983, 605);
             this.Name = "Main";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Image Sorter v1.27 | © 2015-2019 by manuelkamper.com";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);

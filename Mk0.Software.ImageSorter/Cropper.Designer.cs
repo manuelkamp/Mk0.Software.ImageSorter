@@ -65,7 +65,7 @@
             this.ClientSize = new System.Drawing.Size(800, 564);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rubberBand1);
-            this.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(816, 603);

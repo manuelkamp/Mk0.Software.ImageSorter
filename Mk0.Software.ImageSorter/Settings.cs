@@ -23,6 +23,7 @@ namespace Mk0.Software.ImageSorter
                 Properties.Settings.Default.Save();
             }
             checkBoxSingleInstance.Checked = Properties.Settings.Default.singleInstance;
+            checkBoxFileAssociation.Checked = Properties.Settings.Default.fileAssociation;
         }
 
         private void ButtonChangeTargetPath_Click(object sender, EventArgs e)
