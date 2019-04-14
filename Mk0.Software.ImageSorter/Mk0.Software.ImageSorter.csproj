@@ -76,24 +76,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Mk0.GUI.Banner">
-      <HintPath>..\Mk0.GUI.Banner.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+    <Reference Include="Mk0.GUI.Banner, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\Mk0.Tools.Password\Mk0.Tools.Password\Mk0.Tools.Password\mk0.gui.banner.1.0.0\lib\net461\Mk0.GUI.Banner.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Mk0.Tools.Calculation">
-      <HintPath>..\Mk0.Tools.Calculation.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+    <Reference Include="Mk0.Tools.Calculation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\Mk0.Tools.Password\Mk0.Tools.Password\Mk0.Tools.Password\mk0.tools.calculation.1.0.0\lib\net461\Mk0.Tools.Calculation.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Mk0.Tools.ImageCropper">
-      <HintPath>dll\Mk0.Tools.ImageCropper.dll</HintPath>
+    <Reference Include="Mk0.Tools.ImageCropper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\Mk0.Tools.Password\Mk0.Tools.Password\Mk0.Tools.Password\mk0.tools.imagecropper.1.0.0\lib\net461\Mk0.Tools.ImageCropper.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Mk0.Tools.Images">
-      <HintPath>..\Mk0.Tools.Images.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+    <Reference Include="Mk0.Tools.Images, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\Mk0.Tools.Password\Mk0.Tools.Password\Mk0.Tools.Password\mk0.tools.images.1.0.0\lib\net461\Mk0.Tools.Images.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Mk0.Tools.Randomization">
-      <HintPath>..\Mk0.Tools.Randomization.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+    <Reference Include="Mk0.Tools.Randomization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\Mk0.Tools.Password\Mk0.Tools.Password\Mk0.Tools.Password\mk0.tools.randomization.1.0.0\lib\net461\Mk0.Tools.Randomization.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -152,6 +153,7 @@
     <EmbeddedResource Include="Vergleicher.resx">
       <DependentUpon>Vergleicher.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
