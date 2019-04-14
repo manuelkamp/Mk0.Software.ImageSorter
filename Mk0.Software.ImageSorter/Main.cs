@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualBasic.FileIO;
 using Mk0.GUI.Banner;
+using Mk0.Software.ImageSorter.Properties;
 using Mk0.Tools.Calculation;
+using Mk0.Tools.FileAssociaton;
 using Mk0.Tools.Images;
 using Mk0.Tools.Randomization;
 using System;
@@ -29,15 +31,14 @@ namespace Mk0.Software.ImageSorter
         private bool moving;
         private bool moveable = false;
         private Point startLocation; //verschieben
-        private Cursor grabCursor = new Cursor(new MemoryStream(Properties.Resources.grab));
-        private Cursor grabbingCursor = new Cursor(new MemoryStream(Properties.Resources.grabbing));
+        private Cursor grabCursor = new Cursor(new MemoryStream(Resources.grab));
+        private Cursor grabbingCursor = new Cursor(new MemoryStream(Resources.grabbing));
         private double xFaktor = 0.0;
         private double yFaktor = 0.0;
         private static object locker = new object();
         private Thread folderThread;
         private bool threadIsRunning = false;
         private Banner banner;
-        //private string zoomType = "auto";
         private string startuppath;
         private string startupimage;
         public string[] Args;
@@ -50,6 +51,8 @@ namespace Mk0.Software.ImageSorter
             DoubleBuffered = true;
             SetDefaultPath();
             comboBoxZoom.SelectedIndex = Properties.Settings.Default.zoom;
+
+            //todo file assoc prüfen
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -80,6 +83,34 @@ namespace Mk0.Software.ImageSorter
                     CountPicsInPath();
                     LoadPicture(GetImageIndex(Path.Combine(startuppath, startupimage)));
                 }
+            }
+        }
+
+        /// <summary>
+        /// Extrahiert die Icons für die Fileassociation
+        /// </summary>
+        private void ExtractAssocIcons()
+        {
+            Directory.CreateDirectory($@"{Application.StartupPath}\AssocIcons");
+            WriteResource($@"{Application.StartupPath}\AssocIcons\jpg.ico", Resources.jpg);
+            WriteResource($@"{Application.StartupPath}\AssocIcons\png.ico", Resources.png);
+            WriteResource($@"{Application.StartupPath}\AssocIcons\gif.ico", Resources.gif);
+            WriteResource($@"{Application.StartupPath}\AssocIcons\jpeg.ico", Resources.jpeg);
+            WriteResource($@"{Application.StartupPath}\AssocIcons\bmp.ico", Resources.bmp);
+            WriteResource($@"{Application.StartupPath}\AssocIcons\tif.ico", Resources.tif);
+            WriteResource($@"{Application.StartupPath}\AssocIcons\tiff.ico", Resources.tiff);
+        }
+
+        /// <summary>
+        /// Helfer um Resources auf die Platte zu schreiben
+        /// </summary>
+        /// <param name="path">Zielpfad</param>
+        /// <param name="icon">Resource</param>
+        private void WriteResource(string path, Icon icon)
+        {
+            using (var fileStream = new FileStream(path, FileMode.Create))
+            {
+                icon.Save(fileStream);
             }
         }
 
@@ -285,8 +316,31 @@ namespace Mk0.Software.ImageSorter
             s.ShowDialog();
 
             zielPath = Properties.Settings.Default.targetPath;
-            labelZielPath.Text = this.zielPath;
+            labelZielPath.Text = zielPath;
             imageIndex = 0;
+
+            if (Properties.Settings.Default.fileAssociation)
+            {
+                ExtractAssocIcons();
+                FileAssociation.Add("Image_Sorter_JPG", ".jpg", Application.ExecutablePath, "JPG Bild", $@"{Application.StartupPath}\AssocIcons\jpg.ico");
+                FileAssociation.Add("Image_Sorter_PNG", ".png", Application.ExecutablePath, "PNG Bild", $@"{Application.StartupPath}\AssocIcons\png.ico");
+                FileAssociation.Add("Image_Sorter_GIF", ".gif", Application.ExecutablePath, "GIF Bild", $@"{Application.StartupPath}\AssocIcons\gif.ico");
+                FileAssociation.Add("Image_Sorter_JPEG", ".jpeg", Application.ExecutablePath, "JPEG Bild", $@"{Application.StartupPath}\AssocIcons\jpeg.ico");
+                FileAssociation.Add("Image_Sorter_BMP", ".bmp", Application.ExecutablePath, "BMP Bild", $@"{Application.StartupPath}\AssocIcons\bmp.ico");
+                FileAssociation.Add("Image_Sorter_TIF", ".tif", Application.ExecutablePath, "TIF Bild", $@"{Application.StartupPath}\AssocIcons\tif.ico");
+                FileAssociation.Add("Image_Sorter_TIFF", ".tiff", Application.ExecutablePath, "TIFF Bild", $@"{Application.StartupPath}\AssocIcons\tiff.ico");
+            }
+            else
+            {
+                Directory.Delete($@"{Application.StartupPath}\AssocIcons", true);
+                FileAssociation.Remove("Image_Sorter_JPG", ".jpg", Application.ExecutablePath, "JPG Bild", $@"{Application.StartupPath}\AssocIcons\jpg.ico");
+                FileAssociation.Remove("Image_Sorter_PNG", ".png", Application.ExecutablePath, "PNG Bild", $@"{Application.StartupPath}\AssocIcons\png.ico");
+                FileAssociation.Remove("Image_Sorter_GIF", ".gif", Application.ExecutablePath, "GIF Bild", $@"{Application.StartupPath}\AssocIcons\gif.ico");
+                FileAssociation.Remove("Image_Sorter_JPEG", ".jpeg", Application.ExecutablePath, "JPEG Bild", $@"{Application.StartupPath}\AssocIcons\jpeg.ico");
+                FileAssociation.Remove("Image_Sorter_BMP", ".bmp", Application.ExecutablePath, "BMP Bild", $@"{Application.StartupPath}\AssocIcons\bmp.ico");
+                FileAssociation.Remove("Image_Sorter_TIF", ".tif", Application.ExecutablePath, "TIF Bild", $@"{Application.StartupPath}\AssocIcons\tif.ico");
+                FileAssociation.Remove("Image_Sorter_TIFF", ".tiff", Application.ExecutablePath, "TIFF Bild", $@"{Application.StartupPath}\AssocIcons\tiff.ico");
+            }
 
             CheckSubfolders();
             SearchImages();
