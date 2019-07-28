@@ -233,7 +233,6 @@
             // 
             // buttonJumpBack
             // 
-            this.buttonJumpBack.Enabled = false;
             this.buttonJumpBack.Font = new System.Drawing.Font("Wingdings", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.buttonJumpBack.Location = new System.Drawing.Point(6, 16);
             this.buttonJumpBack.Name = "buttonJumpBack";
@@ -503,7 +502,7 @@
             this.MinimumSize = new System.Drawing.Size(983, 605);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Image Sorter v1.32 | © 2015-2019 by manuelkamper.com";
+            this.Text = "Image Sorter v1.33 | © 2015-2019 by manuelkamper.com";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             this.Shown += new System.EventHandler(this.Main_Shown);
