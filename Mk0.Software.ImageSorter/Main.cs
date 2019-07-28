@@ -149,6 +149,48 @@ namespace Mk0.Software.ImageSorter
                 LoadPicture(GetImageIndex(Path.Combine(startuppath, startupimage)));
             }
             ResetUndo();
+            ToolTip t1 = new ToolTip
+            {
+                AutoPopDelay = 5000,
+                InitialDelay = 1000,
+                ReshowDelay = 500
+            };
+            t1.SetToolTip(buttonJumpBack, "Voriges Bild");
+            ToolTip t2 = new ToolTip
+            {
+                AutoPopDelay = 5000,
+                InitialDelay = 1000,
+                ReshowDelay = 500
+            };
+            t2.SetToolTip(buttonJumpForward, "Nächstes Bild");
+            ToolTip t3 = new ToolTip
+            {
+                AutoPopDelay = 5000,
+                InitialDelay = 1000,
+                ReshowDelay = 500
+            };
+            t3.SetToolTip(buttonUndo, "Aktion Rückgängig machen");
+            ToolTip t4 = new ToolTip
+            {
+                AutoPopDelay = 5000,
+                InitialDelay = 1000,
+                ReshowDelay = 500
+            };
+            t4.SetToolTip(buttonSettings, "Einstellungen öffnen");
+            ToolTip t5 = new ToolTip
+            {
+                AutoPopDelay = 5000,
+                InitialDelay = 1000,
+                ReshowDelay = 500
+            };
+            t5.SetToolTip(buttonQuellPfad, "Quellpfad festlegen");
+            ToolTip t6 = new ToolTip
+            {
+                AutoPopDelay = 5000,
+                InitialDelay = 1000,
+                ReshowDelay = 500
+            };
+            t6.SetToolTip(buttonInfo, "Informationen ein-/ausblenden");
         }
 
         /// <summary>
@@ -261,7 +303,7 @@ namespace Mk0.Software.ImageSorter
             Array.Sort(folders);
             foreach (string folder in folders)
             {
-                if (Path.GetFileNameWithoutExtension(folder).ToString() != "$RECYCLE" && Path.GetFileNameWithoutExtension(folder).ToString() != "System Volume Information" && Path.GetFileNameWithoutExtension(folder).ToString() != "ImageSorter")
+                if (Path.GetFileNameWithoutExtension(folder).ToString() != "$RECYCLE" && Path.GetFileNameWithoutExtension(folder).ToString() != "System Volume Information" && Path.GetFileNameWithoutExtension(folder).ToString() != "ImageSorter" && Path.GetFileNameWithoutExtension(folder).ToString() != "Image Sorter")
                 {
                     Button button = new Button
                     {
@@ -457,7 +499,7 @@ namespace Mk0.Software.ImageSorter
             buttonRotate270.Enabled = enabled;
             buttonRotate90.Enabled = enabled;
             comboBoxZoom.Enabled = enabled;
-            buttonJumpOver.Enabled = enabled;
+            buttonJumpForward.Enabled = enabled;
             labelNoImages.Visible = !enabled;
         }
 
@@ -1037,27 +1079,6 @@ namespace Mk0.Software.ImageSorter
         }
 
         /// <summary>
-        /// aktuelles Bild überspringen
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ButtonJumpOver_Click(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                CountPicsInPath();
-                LoadPicture(imageIndex + 1);
-                CheckUndo();
-            }
-            if (e.Button == MouseButtons.Right)
-            {
-                CountPicsInPath();
-                LoadPicture(imageIndex - 1);
-                CheckUndo();
-            }
-        }
-
-        /// <summary>
         /// Anzeige eines Banners bei verschobenem Bild
         /// </summary>
         /// <param name="bildpfad"></param>
@@ -1211,6 +1232,53 @@ namespace Mk0.Software.ImageSorter
             if(pictureBox.Image != null)
             {
                 Zoom();
+            }
+        }
+
+        /// <summary>
+        /// Zu vorherigem Bild springen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonJumpBack_Click(object sender, MouseEventArgs e)
+        {
+            CountPicsInPath();
+            LoadPicture(imageIndex + 1);
+            CheckUndo();
+        }
+
+        /// <summary>
+        /// Zu nächstem Bild springen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonJumpForward_Click(object sender, MouseEventArgs e)
+        {
+            CountPicsInPath();
+            LoadPicture(imageIndex + 1);
+            CheckUndo();
+        }
+
+        /// <summary>
+        /// Informationen ein-/ausblenden
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonInfo_Click(object sender, EventArgs e)
+        {
+            if(groupBox1.Visible)
+            {
+                //ausblenden
+                groupBox1.Visible = false;
+                groupBox2.Location = new Point(groupBox2.Location.X, 12);
+                groupBox2.Height = groupBox2.Height + 87;
+            }
+            else
+            {
+                //einblenden
+                groupBox1.Visible = true;
+                groupBox2.Location = new Point(groupBox2.Location.X, 99);
+                groupBox2.Height = groupBox2.Height - 87;
             }
         }
     }

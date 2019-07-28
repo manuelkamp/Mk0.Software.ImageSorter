@@ -36,16 +36,18 @@
             this.toolStripMenuItemEditImage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemOpenExplorer = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemImageDetails = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonPfad = new System.Windows.Forms.Button();
+            this.buttonSettings = new System.Windows.Forms.Button();
             this.labelQuellPath = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.buttonQuellPfad = new System.Windows.Forms.Button();
             this.labelCounter = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.labelZielPath = new System.Windows.Forms.Label();
+            this.buttonQuellPfad = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonInfo = new System.Windows.Forms.Button();
+            this.buttonJumpBack = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelNoTargets = new System.Windows.Forms.Label();
-            this.buttonJumpOver = new System.Windows.Forms.Button();
+            this.buttonJumpForward = new System.Windows.Forms.Button();
             this.buttonUndo = new System.Windows.Forms.Button();
             this.buttonDeleteImage = new System.Windows.Forms.Button();
             this.buttonRotate90 = new System.Windows.Forms.Button();
@@ -77,8 +79,8 @@
             // 
             // pictureBox
             // 
-            this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBox.ContextMenuStrip = this.contextMenuStrip;
@@ -135,21 +137,22 @@
             this.toolStripMenuItemImageDetails.Text = "Bildeigenschaften (F5)";
             this.toolStripMenuItemImageDetails.Click += new System.EventHandler(this.ToolStripMenuItemImageDetails_Click);
             // 
-            // buttonPfad
+            // buttonSettings
             // 
-            this.buttonPfad.Location = new System.Drawing.Point(6, 18);
-            this.buttonPfad.Name = "buttonPfad";
-            this.buttonPfad.Size = new System.Drawing.Size(88, 22);
-            this.buttonPfad.TabIndex = 1;
-            this.buttonPfad.Text = "Einstellungen";
-            this.buttonPfad.UseVisualStyleBackColor = true;
-            this.buttonPfad.Click += new System.EventHandler(this.ButtonSettings_Click);
+            this.buttonSettings.Font = new System.Drawing.Font("Webdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.buttonSettings.Location = new System.Drawing.Point(233, 16);
+            this.buttonSettings.Name = "buttonSettings";
+            this.buttonSettings.Size = new System.Drawing.Size(23, 23);
+            this.buttonSettings.TabIndex = 1;
+            this.buttonSettings.Text = "@";
+            this.buttonSettings.UseVisualStyleBackColor = true;
+            this.buttonSettings.Click += new System.EventHandler(this.ButtonSettings_Click);
             // 
             // labelQuellPath
             // 
             this.labelQuellPath.AutoSize = true;
             this.labelQuellPath.ForeColor = System.Drawing.Color.SteelBlue;
-            this.labelQuellPath.Location = new System.Drawing.Point(6, 72);
+            this.labelQuellPath.Location = new System.Drawing.Point(6, 45);
             this.labelQuellPath.Name = "labelQuellPath";
             this.labelQuellPath.Size = new System.Drawing.Size(76, 13);
             this.labelQuellPath.TabIndex = 2;
@@ -158,71 +161,97 @@
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.buttonQuellPfad);
             this.groupBox1.Controls.Add(this.labelCounter);
-            this.groupBox1.Controls.Add(this.buttonPfad);
             this.groupBox1.Controls.Add(this.labelQuellPath);
+            this.groupBox1.Controls.Add(this.labelZielPath);
             this.groupBox1.Location = new System.Drawing.Point(694, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(262, 91);
+            this.groupBox1.Size = new System.Drawing.Size(262, 81);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informationen";
-            // 
-            // buttonQuellPfad
-            // 
-            this.buttonQuellPfad.Location = new System.Drawing.Point(6, 46);
-            this.buttonQuellPfad.Name = "buttonQuellPfad";
-            this.buttonQuellPfad.Size = new System.Drawing.Size(250, 23);
-            this.buttonQuellPfad.TabIndex = 4;
-            this.buttonQuellPfad.Text = "Quellpfad wählen";
-            this.buttonQuellPfad.UseVisualStyleBackColor = true;
-            this.buttonQuellPfad.Click += new System.EventHandler(this.ButtonQuellPfad_Click);
             // 
             // labelCounter
             // 
             this.labelCounter.AutoSize = true;
             this.labelCounter.ForeColor = System.Drawing.Color.Gray;
-            this.labelCounter.Location = new System.Drawing.Point(102, 12);
+            this.labelCounter.Location = new System.Drawing.Point(6, 16);
             this.labelCounter.Name = "labelCounter";
             this.labelCounter.Size = new System.Drawing.Size(94, 13);
             this.labelCounter.TabIndex = 3;
             this.labelCounter.Text = "keine Bildaktionen";
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.labelZielPath);
-            this.groupBox2.Controls.Add(this.panel2);
-            this.groupBox2.Controls.Add(this.buttonJumpOver);
-            this.groupBox2.Controls.Add(this.buttonUndo);
-            this.groupBox2.Location = new System.Drawing.Point(694, 109);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(262, 423);
-            this.groupBox2.TabIndex = 4;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Ziele";
-            // 
             // labelZielPath
             // 
             this.labelZielPath.AutoSize = true;
             this.labelZielPath.ForeColor = System.Drawing.Color.SteelBlue;
-            this.labelZielPath.Location = new System.Drawing.Point(6, 16);
+            this.labelZielPath.Location = new System.Drawing.Point(6, 60);
             this.labelZielPath.Name = "labelZielPath";
             this.labelZielPath.Size = new System.Drawing.Size(168, 13);
             this.labelZielPath.TabIndex = 6;
             this.labelZielPath.Text = "Zielpfad in Einstellungen wählen...";
             // 
+            // buttonQuellPfad
+            // 
+            this.buttonQuellPfad.Font = new System.Drawing.Font("Wingdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.buttonQuellPfad.Location = new System.Drawing.Point(204, 16);
+            this.buttonQuellPfad.Name = "buttonQuellPfad";
+            this.buttonQuellPfad.Size = new System.Drawing.Size(23, 23);
+            this.buttonQuellPfad.TabIndex = 4;
+            this.buttonQuellPfad.Text = "1";
+            this.buttonQuellPfad.UseVisualStyleBackColor = true;
+            this.buttonQuellPfad.Click += new System.EventHandler(this.ButtonQuellPfad_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.buttonInfo);
+            this.groupBox2.Controls.Add(this.buttonQuellPfad);
+            this.groupBox2.Controls.Add(this.buttonSettings);
+            this.groupBox2.Controls.Add(this.buttonJumpBack);
+            this.groupBox2.Controls.Add(this.panel2);
+            this.groupBox2.Controls.Add(this.buttonJumpForward);
+            this.groupBox2.Controls.Add(this.buttonUndo);
+            this.groupBox2.Location = new System.Drawing.Point(694, 99);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(262, 433);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Ziele";
+            // 
+            // buttonInfo
+            // 
+            this.buttonInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonInfo.Location = new System.Drawing.Point(175, 16);
+            this.buttonInfo.Name = "buttonInfo";
+            this.buttonInfo.Size = new System.Drawing.Size(23, 23);
+            this.buttonInfo.TabIndex = 8;
+            this.buttonInfo.Text = "i";
+            this.buttonInfo.UseVisualStyleBackColor = true;
+            this.buttonInfo.Click += new System.EventHandler(this.ButtonInfo_Click);
+            // 
+            // buttonJumpBack
+            // 
+            this.buttonJumpBack.Enabled = false;
+            this.buttonJumpBack.Font = new System.Drawing.Font("Wingdings", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.buttonJumpBack.Location = new System.Drawing.Point(6, 16);
+            this.buttonJumpBack.Name = "buttonJumpBack";
+            this.buttonJumpBack.Size = new System.Drawing.Size(23, 23);
+            this.buttonJumpBack.TabIndex = 7;
+            this.buttonJumpBack.Text = "ç";
+            this.buttonJumpBack.UseVisualStyleBackColor = true;
+            this.buttonJumpBack.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ButtonJumpBack_Click);
+            // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel2.AutoScroll = true;
             this.panel2.Controls.Add(this.labelNoTargets);
-            this.panel2.Location = new System.Drawing.Point(3, 90);
+            this.panel2.Location = new System.Drawing.Point(3, 45);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(258, 327);
+            this.panel2.Size = new System.Drawing.Size(258, 382);
             this.panel2.TabIndex = 5;
             this.panel2.MouseEnter += new System.EventHandler(this.Panel2_MouseEnter);
             this.panel2.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
@@ -239,26 +268,27 @@
     "Zielpfades verschoben werden.\r\n\r\nWählen Sie einen anderen Zielpfad\r\nin den Einst" +
     "ellungen.";
             // 
-            // buttonJumpOver
+            // buttonJumpForward
             // 
-            this.buttonJumpOver.Enabled = false;
-            this.buttonJumpOver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonJumpOver.Location = new System.Drawing.Point(6, 32);
-            this.buttonJumpOver.Name = "buttonJumpOver";
-            this.buttonJumpOver.Size = new System.Drawing.Size(250, 23);
-            this.buttonJumpOver.TabIndex = 1;
-            this.buttonJumpOver.Text = "Weiter-li. Maus / Zurück-re. Maus)";
-            this.buttonJumpOver.UseVisualStyleBackColor = true;
-            this.buttonJumpOver.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ButtonJumpOver_Click);
+            this.buttonJumpForward.Enabled = false;
+            this.buttonJumpForward.Font = new System.Drawing.Font("Wingdings", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.buttonJumpForward.Location = new System.Drawing.Point(35, 16);
+            this.buttonJumpForward.Name = "buttonJumpForward";
+            this.buttonJumpForward.Size = new System.Drawing.Size(23, 23);
+            this.buttonJumpForward.TabIndex = 1;
+            this.buttonJumpForward.Text = "è";
+            this.buttonJumpForward.UseVisualStyleBackColor = true;
+            this.buttonJumpForward.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ButtonJumpForward_Click);
             // 
             // buttonUndo
             // 
             this.buttonUndo.Enabled = false;
-            this.buttonUndo.Location = new System.Drawing.Point(6, 61);
+            this.buttonUndo.Font = new System.Drawing.Font("Wingdings", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.buttonUndo.Location = new System.Drawing.Point(64, 16);
             this.buttonUndo.Name = "buttonUndo";
-            this.buttonUndo.Size = new System.Drawing.Size(250, 23);
+            this.buttonUndo.Size = new System.Drawing.Size(23, 23);
             this.buttonUndo.TabIndex = 2;
-            this.buttonUndo.Text = "Rückgängig (letzte Bearbeitung)";
+            this.buttonUndo.Text = "Õ";
             this.buttonUndo.UseVisualStyleBackColor = true;
             this.buttonUndo.Click += new System.EventHandler(this.ButtonUndo_Click);
             // 
@@ -335,8 +365,8 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.Controls.Add(this.labelNoImages);
@@ -349,8 +379,8 @@
             // 
             // labelNoImages
             // 
-            this.labelNoImages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.labelNoImages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelNoImages.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNoImages.ForeColor = System.Drawing.Color.Maroon;
@@ -374,7 +404,7 @@
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel3.Controls.Add(this.pictureBox2);
@@ -473,7 +503,7 @@
             this.MinimumSize = new System.Drawing.Size(983, 605);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Image Sorter v1.31 | © 2015-2019 by manuelkamper.com";
+            this.Text = "Image Sorter v1.32 | © 2015-2019 by manuelkamper.com";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             this.Shown += new System.EventHandler(this.Main_Shown);
@@ -484,7 +514,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -500,12 +529,12 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox;
-        private System.Windows.Forms.Button buttonPfad;
+        private System.Windows.Forms.Button buttonSettings;
         private System.Windows.Forms.Label labelQuellPath;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label labelNoTargets;
-        private System.Windows.Forms.Button buttonJumpOver;
+        private System.Windows.Forms.Button buttonJumpForward;
         private System.Windows.Forms.Label labelCounter;
         private System.Windows.Forms.Button buttonUndo;
         private System.Windows.Forms.Button buttonDeleteImage;
@@ -533,5 +562,7 @@
         private System.Windows.Forms.Label labelZielPath;
         private System.Windows.Forms.ComboBox comboBoxZoom;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button buttonJumpBack;
+        private System.Windows.Forms.Button buttonInfo;
     }
 }
