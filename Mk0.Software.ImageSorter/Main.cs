@@ -42,6 +42,7 @@ namespace Mk0.Software.ImageSorter
         private string startuppath;
         private string startupimage;
         public string[] Args;
+        private System.Timers.Timer t = new System.Timers.Timer(700);
 
         public Main()
         {
@@ -121,11 +122,11 @@ namespace Mk0.Software.ImageSorter
         /// <param name="e"></param>
         private void Main_Shown(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.lastHeight >= this.MinimumSize.Height)
+            if (Properties.Settings.Default.lastHeight >= MinimumSize.Height)
             {
                 Height = Properties.Settings.Default.lastHeight;
             }
-            if (Properties.Settings.Default.lastWidth >= this.MinimumSize.Width)
+            if (Properties.Settings.Default.lastWidth >= MinimumSize.Width)
             {
                 Width = Properties.Settings.Default.lastWidth;
             }
@@ -136,6 +137,12 @@ namespace Mk0.Software.ImageSorter
             if (Properties.Settings.Default.lastLeft <= Screen.PrimaryScreen.Bounds.Width)
             {
                 Left = Properties.Settings.Default.lastLeft;
+            }
+            groupBox1.Visible = Properties.Settings.Default.showInfo;
+            if (!groupBox1.Visible)
+            {
+                groupBox2.Location = new Point(groupBox2.Location.X, 12);
+                groupBox2.Height = groupBox2.Height + 87;
             }
             CheckSubfolders();
             SearchImages();
@@ -632,6 +639,27 @@ namespace Mk0.Software.ImageSorter
             CountPicsInPath();
             LoadPicture(imageIndex);
             CheckUndo();
+            btn.ForeColor = Color.MediumSeaGreen;
+            btn.Font = new Font(btn.Font, FontStyle.Bold);
+            
+            t.Elapsed += new System.Timers.ElapsedEventHandler((sender1, e1) => ButtonBlink(sender, e, btn));
+            t.Enabled = true;
+        }
+
+        /// <summary>
+        /// Blinkender Button nach erfolgreichem Verschieben
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="btn"></param>
+        private void ButtonBlink(object sender, EventArgs e, Button btn)
+        {
+            btn.BeginInvoke(new MethodInvoker(() =>
+            {
+                btn.ForeColor = SystemColors.ControlText;
+                btn.Font = new Font(btn.Font, FontStyle.Regular);
+            }));
+            t.Stop();
         }
 
         /// <summary>
@@ -1075,6 +1103,7 @@ namespace Mk0.Software.ImageSorter
             Properties.Settings.Default.lastHeight = Height;
             Properties.Settings.Default.lastTop = Top;
             Properties.Settings.Default.lastLeft = Left;
+            Properties.Settings.Default.showInfo = groupBox1.Visible;
             Properties.Settings.Default.Save();
         }
 
