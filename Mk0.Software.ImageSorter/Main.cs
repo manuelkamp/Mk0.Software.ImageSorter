@@ -42,7 +42,7 @@ namespace Mk0.Software.ImageSorter
         private string startuppath;
         private string startupimage;
         public string[] Args;
-        private System.Timers.Timer t = new System.Timers.Timer(700);
+        private System.Timers.Timer t1 = new System.Timers.Timer(1200);
 
         public Main()
         {
@@ -53,7 +53,7 @@ namespace Mk0.Software.ImageSorter
             SetDefaultPath();
             comboBoxZoom.SelectedIndex = Properties.Settings.Default.zoom;
 
-            //todo file assoc prüfen
+            //todo file assoc prüfen und in einstellungen richtig setzen
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -198,6 +198,13 @@ namespace Mk0.Software.ImageSorter
                 ReshowDelay = 500
             };
             t6.SetToolTip(buttonInfo, "Informationen ein-/ausblenden");
+            ToolTip t7 = new ToolTip
+            {
+                AutoPopDelay = 5000,
+                InitialDelay = 1000,
+                ReshowDelay = 500
+            };
+            t7.SetToolTip(buttonLastImage, "Letztes Bild anzeigen");
         }
 
         /// <summary>
@@ -331,6 +338,9 @@ namespace Mk0.Software.ImageSorter
                     button.Text = Path.GetFileNameWithoutExtension(folder).ToString() + " (" + count + ")";
                     button.Size = new Size(225, 30);
                     button.Click += new EventHandler(MovePicture);
+                    System.Timers.Timer tx = new System.Timers.Timer(35);
+                    tx.Elapsed += new System.Timers.ElapsedEventHandler((sender1, e1) => ButtonFade(button, tx));
+                    button.Tag = tx;
                     buttons.Add(button);
                     top += button.Height + 2;
                 }
@@ -381,14 +391,17 @@ namespace Mk0.Software.ImageSorter
             }
             else
             {
-                Directory.Delete($@"{Application.StartupPath}\AssocIcons", true);
-                FileAssociation.Remove("Image_Sorter_JPG", ".jpg", Application.ExecutablePath, "JPG Bild", $@"{Application.StartupPath}\AssocIcons\jpg.ico");
-                FileAssociation.Remove("Image_Sorter_PNG", ".png", Application.ExecutablePath, "PNG Bild", $@"{Application.StartupPath}\AssocIcons\png.ico");
-                FileAssociation.Remove("Image_Sorter_GIF", ".gif", Application.ExecutablePath, "GIF Bild", $@"{Application.StartupPath}\AssocIcons\gif.ico");
-                FileAssociation.Remove("Image_Sorter_JPEG", ".jpeg", Application.ExecutablePath, "JPEG Bild", $@"{Application.StartupPath}\AssocIcons\jpeg.ico");
-                FileAssociation.Remove("Image_Sorter_BMP", ".bmp", Application.ExecutablePath, "BMP Bild", $@"{Application.StartupPath}\AssocIcons\bmp.ico");
-                FileAssociation.Remove("Image_Sorter_TIF", ".tif", Application.ExecutablePath, "TIF Bild", $@"{Application.StartupPath}\AssocIcons\tif.ico");
-                FileAssociation.Remove("Image_Sorter_TIFF", ".tiff", Application.ExecutablePath, "TIFF Bild", $@"{Application.StartupPath}\AssocIcons\tiff.ico");
+                if(Directory.Exists($@"{Application.StartupPath}\AssocIcons"))
+                {
+                    Directory.Delete($@"{Application.StartupPath}\AssocIcons", true);
+                    FileAssociation.Remove("Image_Sorter_JPG", ".jpg", Application.ExecutablePath, "JPG Bild", $@"{Application.StartupPath}\AssocIcons\jpg.ico");
+                    FileAssociation.Remove("Image_Sorter_PNG", ".png", Application.ExecutablePath, "PNG Bild", $@"{Application.StartupPath}\AssocIcons\png.ico");
+                    FileAssociation.Remove("Image_Sorter_GIF", ".gif", Application.ExecutablePath, "GIF Bild", $@"{Application.StartupPath}\AssocIcons\gif.ico");
+                    FileAssociation.Remove("Image_Sorter_JPEG", ".jpeg", Application.ExecutablePath, "JPEG Bild", $@"{Application.StartupPath}\AssocIcons\jpeg.ico");
+                    FileAssociation.Remove("Image_Sorter_BMP", ".bmp", Application.ExecutablePath, "BMP Bild", $@"{Application.StartupPath}\AssocIcons\bmp.ico");
+                    FileAssociation.Remove("Image_Sorter_TIF", ".tif", Application.ExecutablePath, "TIF Bild", $@"{Application.StartupPath}\AssocIcons\tif.ico");
+                    FileAssociation.Remove("Image_Sorter_TIFF", ".tiff", Application.ExecutablePath, "TIFF Bild", $@"{Application.StartupPath}\AssocIcons\tiff.ico");
+                }
             }
 
             CheckSubfolders();
@@ -639,11 +652,16 @@ namespace Mk0.Software.ImageSorter
             CountPicsInPath();
             LoadPicture(imageIndex);
             CheckUndo();
-            btn.ForeColor = Color.MediumSeaGreen;
-            btn.Font = new Font(btn.Font, FontStyle.Bold);
-            
-            t.Elapsed += new System.Timers.ElapsedEventHandler((sender1, e1) => ButtonBlink(sender, e, btn));
-            t.Enabled = true;
+
+            if(Properties.Settings.Default.fading)
+            {
+                btn.BackColor = Color.LightSalmon;
+                btn.ForeColor = Color.MediumSeaGreen;
+                btn.Font = new Font(btn.Font, FontStyle.Bold);
+                System.Timers.Timer t = new System.Timers.Timer(700);
+                t.Elapsed += new System.Timers.ElapsedEventHandler((sender1, e1) => ButtonBlink(sender, e, btn, t));
+                t.Start();
+            }
         }
 
         /// <summary>
@@ -652,14 +670,45 @@ namespace Mk0.Software.ImageSorter
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <param name="btn"></param>
-        private void ButtonBlink(object sender, EventArgs e, Button btn)
+        private void ButtonBlink(object sender, EventArgs e, Button btn, System.Timers.Timer t)
         {
             btn.BeginInvoke(new MethodInvoker(() =>
             {
+                System.Timers.Timer tx = btn.Tag as System.Timers.Timer;
+                if (tx.Enabled)
+                {
+                    tx.Stop();
+                    btn.BackColor = Color.LightSalmon;
+                }
                 btn.ForeColor = SystemColors.ControlText;
                 btn.Font = new Font(btn.Font, FontStyle.Regular);
+                tx.Start();
             }));
             t.Stop();
+        }
+
+        /// <summary>
+        /// Hintergrundfarbe des Buttons langsam nach Transparent blenden
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="btn"></param>
+        private void ButtonFade(Button btn, System.Timers.Timer tx)
+        {
+            btn.BeginInvoke(new MethodInvoker(() =>
+            {
+                int speed = Properties.Settings.Default.fadingSpeed * (Properties.Settings.Default.fadingSpeed / 3) + 1;
+                int alpha = btn.BackColor.A;
+                if (alpha - speed >= 0)
+                {
+                    btn.BackColor = Color.FromArgb(btn.BackColor.A - speed, btn.BackColor.R, btn.BackColor.G, btn.BackColor.B);
+                }
+                else
+                {
+                    btn.BackColor = Color.Transparent;
+                    tx.Stop();
+                }
+            }));
         }
 
         /// <summary>
@@ -1272,7 +1321,7 @@ namespace Mk0.Software.ImageSorter
         private void ButtonJumpBack_Click(object sender, MouseEventArgs e)
         {
             CountPicsInPath();
-            LoadPicture(imageIndex + 1);
+            LoadPicture(imageIndex - 1);
             CheckUndo();
         }
 
@@ -1309,6 +1358,16 @@ namespace Mk0.Software.ImageSorter
                 groupBox2.Location = new Point(groupBox2.Location.X, 99);
                 groupBox2.Height = groupBox2.Height - 87;
             }
+        }
+
+        private void ButtonLastImage_MouseDown(object sender, MouseEventArgs e)
+        {
+            //todo vorheriges Bild anzeigen
+        }
+
+        private void ButtonLastImage_MouseUp(object sender, MouseEventArgs e)
+        {
+            //todo vorheriges Bild ausblenden
         }
     }
 }

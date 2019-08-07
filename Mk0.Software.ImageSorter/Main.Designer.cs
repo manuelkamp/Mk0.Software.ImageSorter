@@ -66,6 +66,7 @@
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.comboBoxZoom = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.buttonLastImage = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -206,6 +207,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.buttonLastImage);
             this.groupBox2.Controls.Add(this.buttonInfo);
             this.groupBox2.Controls.Add(this.buttonQuellPfad);
             this.groupBox2.Controls.Add(this.buttonSettings);
@@ -387,8 +389,8 @@
             this.labelNoImages.Name = "labelNoImages";
             this.labelNoImages.Size = new System.Drawing.Size(682, 526);
             this.labelNoImages.TabIndex = 1;
-            this.labelNoImages.Text = "Keine Bilder im aktuellen Pfad vorhanden.\r\nBitte den Pfad ändern, um Bilder zu so" +
-    "rtieren.\r\nErlaubte Dateiformate sind (JPG, PNG, GIF, BMP, TIF).";
+            this.labelNoImages.Text = "Keine Bilder im aktuellen Pfad vorhanden.\r\nBitte den Quellpfad ändern, um Bilder " +
+    "zu sortieren.\r\nErlaubte Dateiformate sind (JPG, PNG, GIF, BMP, TIF).";
             this.labelNoImages.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelZoom
@@ -479,6 +481,19 @@
             this.label3.TabIndex = 15;
             this.label3.Text = "Zoom";
             // 
+            // buttonLastImage
+            // 
+            this.buttonLastImage.Enabled = false;
+            this.buttonLastImage.Font = new System.Drawing.Font("Wingdings", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.buttonLastImage.Location = new System.Drawing.Point(105, 16);
+            this.buttonLastImage.Name = "buttonLastImage";
+            this.buttonLastImage.Size = new System.Drawing.Size(23, 23);
+            this.buttonLastImage.TabIndex = 9;
+            this.buttonLastImage.Text = "I";
+            this.buttonLastImage.UseVisualStyleBackColor = true;
+            this.buttonLastImage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ButtonLastImage_MouseDown);
+            this.buttonLastImage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ButtonLastImage_MouseUp);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -502,7 +517,7 @@
             this.MinimumSize = new System.Drawing.Size(983, 605);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Image Sorter v1.34 | © 2015-2019 by manuelkamper.com";
+            this.Text = "Image Sorter v1.37 | © 2015-2019 by manuelkamper.com";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             this.Shown += new System.EventHandler(this.Main_Shown);
@@ -563,5 +578,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonJumpBack;
         private System.Windows.Forms.Button buttonInfo;
+        private System.Windows.Forms.Button buttonLastImage;
     }
 }

@@ -24,6 +24,8 @@ namespace Mk0.Software.ImageSorter
             }
             checkBoxSingleInstance.Checked = Properties.Settings.Default.singleInstance;
             checkBoxFileAssociation.Checked = Properties.Settings.Default.fileAssociation;
+            checkBoxFading.Checked = Properties.Settings.Default.fading;
+            trackBarFadingSpeed.Value = Properties.Settings.Default.fadingSpeed;
         }
 
         private void ButtonChangeTargetPath_Click(object sender, EventArgs e)
@@ -47,6 +49,21 @@ namespace Mk0.Software.ImageSorter
         {
             Properties.Settings.Default.fileAssociation = checkBoxFileAssociation.Checked;
             Properties.Settings.Default.Save();
+        }
+
+        private void CheckBoxFading_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.fading = checkBoxFading.Checked;
+            trackBarFadingSpeed.Enabled = checkBoxFading.Checked;
+            label6.Enabled = checkBoxFading.Checked;
+            label7.Enabled = checkBoxFading.Checked;
+            label8.Enabled = checkBoxFading.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void TrackBarFadingSpeed_Scroll(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.fadingSpeed = trackBarFadingSpeed.Value;
         }
     }
 }

@@ -42,10 +42,19 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.checkBoxFileAssociation = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.trackBarFadingSpeed = new System.Windows.Forms.TrackBar();
+            this.checkBoxFading = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarFadingSpeed)).BeginInit();
             this.SuspendLayout();
             // 
             // checkBoxSingleInstance
@@ -97,6 +106,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -117,10 +127,9 @@
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(489, 39);
+            this.label2.Size = new System.Drawing.Size(492, 48);
             this.label2.TabIndex = 0;
             this.label2.Text = resources.GetString("label2.Text");
             // 
@@ -140,10 +149,9 @@
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 3);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(474, 39);
+            this.label3.Size = new System.Drawing.Size(489, 39);
             this.label3.TabIndex = 0;
             this.label3.Text = resources.GetString("label3.Text");
             // 
@@ -171,12 +179,92 @@
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(5, 3);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(473, 39);
+            this.label4.Size = new System.Drawing.Size(490, 39);
             this.label4.TabIndex = 0;
-            this.label4.Text = resources.GetString("label4.Text");
+            this.label4.Text = "Wenn sie die Dateizuordnung aktivieren, werden Bildtypen mit ImageSorter verbunde" +
+    "n. Sie können dann Bilder mittels Doppelklick bzw. rechter Maustaste \"Öffnen mit" +
+    "...\" mit dem ImageSorter direkt öffnen.";
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.label8);
+            this.tabPage4.Controls.Add(this.label7);
+            this.tabPage4.Controls.Add(this.label6);
+            this.tabPage4.Controls.Add(this.trackBarFadingSpeed);
+            this.tabPage4.Controls.Add(this.checkBoxFading);
+            this.tabPage4.Controls.Add(this.label5);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(498, 107);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Fading";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Enabled = false;
+            this.label8.Location = new System.Drawing.Point(114, 88);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(50, 13);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Langsam";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Enabled = false;
+            this.label7.Location = new System.Drawing.Point(450, 88);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 13);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Schnell";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Enabled = false;
+            this.label6.Location = new System.Drawing.Point(249, 41);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(120, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Fading-Geschwindigkeit";
+            // 
+            // trackBarFadingSpeed
+            // 
+            this.trackBarFadingSpeed.Enabled = false;
+            this.trackBarFadingSpeed.LargeChange = 3;
+            this.trackBarFadingSpeed.Location = new System.Drawing.Point(170, 56);
+            this.trackBarFadingSpeed.Minimum = 1;
+            this.trackBarFadingSpeed.Name = "trackBarFadingSpeed";
+            this.trackBarFadingSpeed.Size = new System.Drawing.Size(274, 45);
+            this.trackBarFadingSpeed.TabIndex = 2;
+            this.trackBarFadingSpeed.Value = 1;
+            this.trackBarFadingSpeed.Scroll += new System.EventHandler(this.TrackBarFadingSpeed_Scroll);
+            // 
+            // checkBoxFading
+            // 
+            this.checkBoxFading.AutoSize = true;
+            this.checkBoxFading.Location = new System.Drawing.Point(9, 40);
+            this.checkBoxFading.Name = "checkBoxFading";
+            this.checkBoxFading.Size = new System.Drawing.Size(107, 17);
+            this.checkBoxFading.TabIndex = 1;
+            this.checkBoxFading.Text = "Fading aktivieren";
+            this.checkBoxFading.UseVisualStyleBackColor = true;
+            this.checkBoxFading.CheckedChanged += new System.EventHandler(this.CheckBoxFading_CheckedChanged);
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(6, 3);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(486, 34);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Mit Fading wird eine farbliche markierung von zuletzt gedrückten Ziel-Buttons akt" +
+    "iviert. Die Geschwindigkeit regelt, wie schnell diese Markierung wieder verblass" +
+    "t.";
             // 
             // Settings
             // 
@@ -200,6 +288,9 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarFadingSpeed)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -219,5 +310,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBoxFileAssociation;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TrackBar trackBarFadingSpeed;
+        private System.Windows.Forms.CheckBox checkBoxFading;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
     }
 }

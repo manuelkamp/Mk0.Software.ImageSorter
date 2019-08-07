@@ -142,5 +142,29 @@ namespace Mk0.Software.ImageSorter.Properties {
                 this["showInfo"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool fading {
+            get {
+                return ((bool)(this["fading"]));
+            }
+            set {
+                this["fading"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int fadingSpeed {
+            get {
+                return ((int)(this["fadingSpeed"]));
+            }
+            set {
+                this["fadingSpeed"] = value;
+            }
+        }
     }
 }
