@@ -43,6 +43,7 @@
             this.labelZielPath = new System.Windows.Forms.Label();
             this.buttonQuellPfad = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonLastImage = new System.Windows.Forms.Button();
             this.buttonInfo = new System.Windows.Forms.Button();
             this.buttonJumpBack = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -66,7 +67,7 @@
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.comboBoxZoom = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.buttonLastImage = new System.Windows.Forms.Button();
+            this.buttonDuplicate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -222,6 +223,19 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ziele";
             // 
+            // buttonLastImage
+            // 
+            this.buttonLastImage.Font = new System.Drawing.Font("Wingdings", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.buttonLastImage.Location = new System.Drawing.Point(105, 16);
+            this.buttonLastImage.Name = "buttonLastImage";
+            this.buttonLastImage.Size = new System.Drawing.Size(23, 23);
+            this.buttonLastImage.TabIndex = 9;
+            this.buttonLastImage.Text = "I";
+            this.buttonLastImage.UseVisualStyleBackColor = true;
+            this.buttonLastImage.Visible = false;
+            this.buttonLastImage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ButtonLastImage_MouseDown);
+            this.buttonLastImage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ButtonLastImage_MouseUp);
+            // 
             // buttonInfo
             // 
             this.buttonInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -298,7 +312,7 @@
             this.buttonDeleteImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonDeleteImage.Location = new System.Drawing.Point(6, 538);
             this.buttonDeleteImage.Name = "buttonDeleteImage";
-            this.buttonDeleteImage.Size = new System.Drawing.Size(100, 23);
+            this.buttonDeleteImage.Size = new System.Drawing.Size(95, 23);
             this.buttonDeleteImage.TabIndex = 5;
             this.buttonDeleteImage.Text = "Löschen";
             this.buttonDeleteImage.UseVisualStyleBackColor = true;
@@ -307,9 +321,9 @@
             // buttonRotate90
             // 
             this.buttonRotate90.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonRotate90.Location = new System.Drawing.Point(121, 538);
+            this.buttonRotate90.Location = new System.Drawing.Point(112, 538);
             this.buttonRotate90.Name = "buttonRotate90";
-            this.buttonRotate90.Size = new System.Drawing.Size(100, 23);
+            this.buttonRotate90.Size = new System.Drawing.Size(95, 23);
             this.buttonRotate90.TabIndex = 6;
             this.buttonRotate90.Tag = "90";
             this.buttonRotate90.Text = "Drehen 90°";
@@ -319,9 +333,9 @@
             // buttonRotate180
             // 
             this.buttonRotate180.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonRotate180.Location = new System.Drawing.Point(227, 538);
+            this.buttonRotate180.Location = new System.Drawing.Point(213, 538);
             this.buttonRotate180.Name = "buttonRotate180";
-            this.buttonRotate180.Size = new System.Drawing.Size(100, 23);
+            this.buttonRotate180.Size = new System.Drawing.Size(95, 23);
             this.buttonRotate180.TabIndex = 7;
             this.buttonRotate180.Tag = "180";
             this.buttonRotate180.Text = "Drehen 180°";
@@ -331,9 +345,9 @@
             // buttonRotate270
             // 
             this.buttonRotate270.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonRotate270.Location = new System.Drawing.Point(333, 538);
+            this.buttonRotate270.Location = new System.Drawing.Point(314, 538);
             this.buttonRotate270.Name = "buttonRotate270";
-            this.buttonRotate270.Size = new System.Drawing.Size(100, 23);
+            this.buttonRotate270.Size = new System.Drawing.Size(95, 23);
             this.buttonRotate270.TabIndex = 8;
             this.buttonRotate270.Tag = "270";
             this.buttonRotate270.Text = "Drehen 270°";
@@ -343,9 +357,9 @@
             // buttonMirrorHorizontal
             // 
             this.buttonMirrorHorizontal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonMirrorHorizontal.Location = new System.Drawing.Point(448, 538);
+            this.buttonMirrorHorizontal.Location = new System.Drawing.Point(420, 538);
             this.buttonMirrorHorizontal.Name = "buttonMirrorHorizontal";
-            this.buttonMirrorHorizontal.Size = new System.Drawing.Size(100, 23);
+            this.buttonMirrorHorizontal.Size = new System.Drawing.Size(95, 23);
             this.buttonMirrorHorizontal.TabIndex = 9;
             this.buttonMirrorHorizontal.Tag = "y";
             this.buttonMirrorHorizontal.Text = "Spiegeln horiz.";
@@ -355,9 +369,9 @@
             // buttonMirrorVertikal
             // 
             this.buttonMirrorVertikal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonMirrorVertikal.Location = new System.Drawing.Point(554, 538);
+            this.buttonMirrorVertikal.Location = new System.Drawing.Point(521, 538);
             this.buttonMirrorVertikal.Name = "buttonMirrorVertikal";
-            this.buttonMirrorVertikal.Size = new System.Drawing.Size(100, 23);
+            this.buttonMirrorVertikal.Size = new System.Drawing.Size(95, 23);
             this.buttonMirrorVertikal.TabIndex = 10;
             this.buttonMirrorVertikal.Tag = "x";
             this.buttonMirrorVertikal.Text = "Spiegeln vertikal";
@@ -481,24 +495,24 @@
             this.label3.TabIndex = 15;
             this.label3.Text = "Zoom";
             // 
-            // buttonLastImage
+            // buttonDuplicate
             // 
-            this.buttonLastImage.Enabled = false;
-            this.buttonLastImage.Font = new System.Drawing.Font("Wingdings", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.buttonLastImage.Location = new System.Drawing.Point(105, 16);
-            this.buttonLastImage.Name = "buttonLastImage";
-            this.buttonLastImage.Size = new System.Drawing.Size(23, 23);
-            this.buttonLastImage.TabIndex = 9;
-            this.buttonLastImage.Text = "I";
-            this.buttonLastImage.UseVisualStyleBackColor = true;
-            this.buttonLastImage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ButtonLastImage_MouseDown);
-            this.buttonLastImage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ButtonLastImage_MouseUp);
+            this.buttonDuplicate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonDuplicate.Location = new System.Drawing.Point(627, 538);
+            this.buttonDuplicate.Name = "buttonDuplicate";
+            this.buttonDuplicate.Size = new System.Drawing.Size(95, 23);
+            this.buttonDuplicate.TabIndex = 16;
+            this.buttonDuplicate.Tag = "x";
+            this.buttonDuplicate.Text = "Duplizieren";
+            this.buttonDuplicate.UseVisualStyleBackColor = true;
+            this.buttonDuplicate.Click += new System.EventHandler(this.ButtonDuplicate_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(967, 566);
+            this.Controls.Add(this.buttonDuplicate);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBoxZoom);
             this.Controls.Add(this.panel3);
@@ -517,7 +531,7 @@
             this.MinimumSize = new System.Drawing.Size(983, 605);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Image Sorter v1.37 | © 2015-2019 by manuelkamper.com";
+            this.Text = "Image Sorter v1.39 | © 2015-2019 by manuelkamper.com";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             this.Shown += new System.EventHandler(this.Main_Shown);
@@ -579,5 +593,6 @@
         private System.Windows.Forms.Button buttonJumpBack;
         private System.Windows.Forms.Button buttonInfo;
         private System.Windows.Forms.Button buttonLastImage;
+        private System.Windows.Forms.Button buttonDuplicate;
     }
 }

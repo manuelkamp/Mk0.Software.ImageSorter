@@ -1199,6 +1199,17 @@ namespace Mk0.Software.ImageSorter
         }
 
         /// <summary>
+        /// Anzeige eines Banners bei erstelltem Duplikat
+        /// </summary>
+        /// <param name="bild"></param>
+        /// <param name="bildpfad"></param>
+        private void ShowDuplicatedMessage(Image bild, string bildpfad)
+        {
+            banner.Enqueue("Das Duplikat \"" + Path.GetFileName(bildpfad) + "\" wurde", "erstellt.", bild, Properties.Resources.duplicate);
+            banner.ShowMessages();
+        }
+
+        /// <summary>
         /// Bild wieder neu zentrieren und skalieren nach Größenänderung des Fensters
         /// </summary>
         /// <param name="sender"></param>
@@ -1360,14 +1371,44 @@ namespace Mk0.Software.ImageSorter
             }
         }
 
+        /// <summary>
+        /// Blendet letztes Bild ein
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonLastImage_MouseDown(object sender, MouseEventArgs e)
         {
             //todo vorheriges Bild anzeigen
         }
 
+        /// <summary>
+        /// Blendet letztes Bild aus
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonLastImage_MouseUp(object sender, MouseEventArgs e)
         {
             //todo vorheriges Bild ausblenden
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonDuplicate_Click(object sender, EventArgs e)
+        {
+            //aktuelles bild kopieren
+            string targetPath = Path.Combine(Path.GetDirectoryName(pictureBox.ImageLocation), Path.GetFileNameWithoutExtension(pictureBox.ImageLocation) + Randomize.NumberAndDigits(5, "_") + Path.GetExtension(pictureBox.ImageLocation));
+            File.Copy(pictureBox.ImageLocation, targetPath, true);
+
+            //duplikat als nächstes bild in liste aufnehmen
+            images.Insert(imageIndex + 1, targetPath);
+            CountPicsInPath();
+
+            //duplikat-message anzeigen
+            Image myImg = CopyImage.GetCopyImage(targetPath);
+            ShowDuplicatedMessage(myImg, targetPath);
         }
     }
 }

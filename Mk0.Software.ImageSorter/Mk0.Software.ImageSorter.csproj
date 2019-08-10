@@ -33,7 +33,7 @@
     <PublisherName>manuelkamper.com</PublisherName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.38.0.0</ApplicationVersion>
+    <ApplicationVersion>1.39.0.0</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <ExcludeDeploymentUrl>true</ExcludeDeploymentUrl>
@@ -175,6 +175,7 @@
     <Content Include="dll\Mk0.Tools.Images.dll" />
     <Content Include="dll\Mk0.Tools.Randomization.dll" />
     <Content Include="Resources\bmp.ico" />
+    <None Include="Resources\duplicate.png" />
     <Content Include="Resources\gif.ico" />
     <Content Include="image.ico" />
     <Content Include="Cursors\grab.cur" />
