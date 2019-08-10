@@ -47,6 +47,12 @@ namespace Mk0.Software.ImageSorter
             Close();
         }
 
+        private void Cropper_Resize(object sender, EventArgs e)
+        {
+            label1.MaximumSize = new Size(Width - 40, 28);
+            label1.Size = new Size(Width - 40, 28);
+        }
+
         private void Cropper_FormClosing(object sender, FormClosingEventArgs e)
         {
             img.Dispose();
