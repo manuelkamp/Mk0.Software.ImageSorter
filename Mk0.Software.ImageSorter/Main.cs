@@ -47,8 +47,8 @@ namespace Mk0.Software.ImageSorter
         public Main()
         {
             InitializeComponent();
-            banner = new Banner(components, panel3, pictureBox1, pictureBox2, label1, label2);
-            pictureBox.Cursor = grabCursor;
+            banner = new Banner(components, panelBanner, pictureBoxBanner1, pictureBoxBanner2, labelBanner1, labelBanner2);
+            pictureBoxImage.Cursor = grabCursor;
             DoubleBuffered = true;
             SetDefaultPath();
             comboBoxZoom.SelectedIndex = Properties.Settings.Default.zoom;
@@ -138,11 +138,11 @@ namespace Mk0.Software.ImageSorter
             {
                 Left = Properties.Settings.Default.lastLeft;
             }
-            groupBox1.Visible = Properties.Settings.Default.showInfo;
-            if (!groupBox1.Visible)
+            groupBoxInformationen.Visible = Properties.Settings.Default.showInfo;
+            if (!groupBoxInformationen.Visible)
             {
-                groupBox2.Location = new Point(groupBox2.Location.X, 12);
-                groupBox2.Height = groupBox2.Height + 87;
+                groupBoxZiele.Location = new Point(groupBoxZiele.Location.X, 12);
+                groupBoxZiele.Height = groupBoxZiele.Height + 87;
             }
             CheckSubfolders();
             SearchImages();
@@ -317,7 +317,7 @@ namespace Mk0.Software.ImageSorter
             Array.Sort(folders);
             foreach (string folder in folders)
             {
-                if (Path.GetFileNameWithoutExtension(folder).ToString() != "$RECYCLE" && Path.GetFileNameWithoutExtension(folder).ToString() != "System Volume Information" && Path.GetFileNameWithoutExtension(folder).ToString() != "ImageSorter" && Path.GetFileNameWithoutExtension(folder).ToString() != "Image Sorter")
+                if (Path.GetFileNameWithoutExtension(folder).ToString() != "$RECYCLE" && Path.GetFileNameWithoutExtension(folder).ToString() != "System Volume Information" && Path.GetFileNameWithoutExtension(folder).ToString() != "ImageSorter" && Path.GetFileNameWithoutExtension(folder).ToString() != "Image Sorter" && Path.GetFileNameWithoutExtension(folder).ToString() != "AssocIcons")
                 {
                     Button button = new Button
                     {
@@ -348,7 +348,7 @@ namespace Mk0.Software.ImageSorter
 
             foreach (Button button in this.buttons)
             {
-                panel2.Controls.Add(button);
+                panelButtons.Controls.Add(button);
             }
         }
 
@@ -360,7 +360,7 @@ namespace Mk0.Software.ImageSorter
         {
             foreach (Button button in list)
             {
-                panel2.Controls.Remove(button);
+                panelButtons.Controls.Remove(button);
             }
         }
 
@@ -536,11 +536,11 @@ namespace Mk0.Software.ImageSorter
                 {
                     imageIndex = 0;
                 }
-                pictureBox.ImageLocation = CropImageBorders(images.ElementAt(imageIndex));
+                pictureBoxImage.ImageLocation = CropImageBorders(images.ElementAt(imageIndex));
             }
             else
             {
-                pictureBox.Image = null;
+                pictureBoxImage.Image = null;
             }
         }
 
@@ -606,22 +606,22 @@ namespace Mk0.Software.ImageSorter
 
             try
             {
-                string fullTargetPath = Path.Combine(targetPath, Path.GetFileName(pictureBox.ImageLocation));
-                Image myImg = CopyImage.GetCopyImage(pictureBox.ImageLocation);
+                string fullTargetPath = Path.Combine(targetPath, Path.GetFileName(pictureBoxImage.ImageLocation));
+                Image myImg = CopyImage.GetCopyImage(pictureBoxImage.ImageLocation);
                 if (File.Exists(fullTargetPath))
                 {
-                    using (var form = new Vergleicher("Das zu verschiebende Bild \"" + Path.GetFileName(pictureBox.ImageLocation) + "\"" + "existiert im Zielverzeichnis \"" + btn.Text + "\" bereits." + Environment.NewLine + Environment.NewLine + "Soll eine Kopie angelegt werden? Nein überschreibt die Datei, Abbrechen bricht den Vorgang ab.", pictureBox.ImageLocation, fullTargetPath))
+                    using (var form = new Vergleicher("Das zu verschiebende Bild \"" + Path.GetFileName(pictureBoxImage.ImageLocation) + "\"" + "existiert im Zielverzeichnis \"" + btn.Text + "\" bereits." + Environment.NewLine + Environment.NewLine + "Soll eine Kopie angelegt werden? Nein überschreibt die Datei, Abbrechen bricht den Vorgang ab.", pictureBoxImage.ImageLocation, fullTargetPath))
                     {
                         var result = form.ShowDialog();
                         if (result == DialogResult.Yes)
                         {
-                            fullTargetPath = Path.Combine(targetPath, Path.GetFileNameWithoutExtension(pictureBox.ImageLocation) + Randomize.NumberAndDigits(5, "_") + Path.GetExtension(pictureBox.ImageLocation));
+                            fullTargetPath = Path.Combine(targetPath, Path.GetFileNameWithoutExtension(pictureBoxImage.ImageLocation) + Randomize.NumberAndDigits(5, "_") + Path.GetExtension(pictureBoxImage.ImageLocation));
                         }
                         else if (result == DialogResult.No)
                         {
-                            File.Copy(pictureBox.ImageLocation, fullTargetPath, true);
-                            File.Delete(pictureBox.ImageLocation);
-                            images.Remove(pictureBox.ImageLocation);
+                            File.Copy(pictureBoxImage.ImageLocation, fullTargetPath, true);
+                            File.Delete(pictureBoxImage.ImageLocation);
+                            images.Remove(pictureBoxImage.ImageLocation);
                             history.Add(fullTargetPath);
                             moved++;
                             ShowMovedMessage(myImg, fullTargetPath, btn.Text);
@@ -637,8 +637,8 @@ namespace Mk0.Software.ImageSorter
                         }
                     }
                 }
-                File.Move(pictureBox.ImageLocation, fullTargetPath);
-                images.Remove(pictureBox.ImageLocation);
+                File.Move(pictureBoxImage.ImageLocation, fullTargetPath);
+                images.Remove(pictureBoxImage.ImageLocation);
                 history.Add(fullTargetPath);
                 moved++;
                 ShowMovedMessage(myImg, fullTargetPath, btn.Text);
@@ -721,7 +721,7 @@ namespace Mk0.Software.ImageSorter
             string targetPath = Path.Combine(this.quellPath, Path.GetFileName(history.ElementAt(history.Count() - 1)));
             if (Path.GetFullPath(history.ElementAt(history.Count() - 1)).StartsWith("C:\\img-tmp"))
             {
-                targetPath = pictureBox.ImageLocation;
+                targetPath = pictureBoxImage.ImageLocation;
             }
 
             try
@@ -786,6 +786,7 @@ namespace Mk0.Software.ImageSorter
             }
 
             LoadPicture(imageIndex);
+            groupBoxTransformation.Visible = false;
         }
 
         /// <summary>
@@ -824,6 +825,7 @@ namespace Mk0.Software.ImageSorter
             }
 
             LoadPicture(imageIndex);
+            groupBoxTransformation.Visible = false;
         }
 
         /// <summary>
@@ -833,10 +835,10 @@ namespace Mk0.Software.ImageSorter
         /// <param name="e"></param>
         private void ImageDelete(object sender, EventArgs e)
         {
-            Image myImg = CopyImage.GetCopyImage(pictureBox.ImageLocation);
-            string pfad = Path.GetFileName(pictureBox.ImageLocation);
-            FileSystem.DeleteFile(pictureBox.ImageLocation, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin, UICancelOption.DoNothing);
-            images.Remove(pictureBox.ImageLocation);
+            Image myImg = CopyImage.GetCopyImage(pictureBoxImage.ImageLocation);
+            string pfad = Path.GetFileName(pictureBoxImage.ImageLocation);
+            FileSystem.DeleteFile(pictureBoxImage.ImageLocation, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin, UICancelOption.DoNothing);
+            images.Remove(pictureBoxImage.ImageLocation);
 
             CheckSubfolders();
             CountPicsInPath();
@@ -855,35 +857,35 @@ namespace Mk0.Software.ImageSorter
 
             if (zoom == "Original")
             {
-                pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-                pictureBox.Size = new Size(pictureBox.Image.Width, pictureBox.Image.Height);
-                if (pictureBox.Image.Width > panel1.Width) { pictureBox.Left = (panel1.Width / 2) - (pictureBox.Width / 2); } else { pictureBox.Left = (panel1.Width / 2) - (pictureBox.Image.Width / 2); }
-                if (pictureBox.Image.Height > panel1.Height) { pictureBox.Top = (panel1.Height / 2) - (pictureBox.Height / 2); } else { pictureBox.Top = (panel1.Height / 2) - (pictureBox.Image.Height / 2); }
+                pictureBoxImage.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureBoxImage.Size = new Size(pictureBoxImage.Image.Width, pictureBoxImage.Image.Height);
+                if (pictureBoxImage.Image.Width > panelImageBackground.Width) { pictureBoxImage.Left = (panelImageBackground.Width / 2) - (pictureBoxImage.Width / 2); } else { pictureBoxImage.Left = (panelImageBackground.Width / 2) - (pictureBoxImage.Image.Width / 2); }
+                if (pictureBoxImage.Image.Height > panelImageBackground.Height) { pictureBoxImage.Top = (panelImageBackground.Height / 2) - (pictureBoxImage.Height / 2); } else { pictureBoxImage.Top = (panelImageBackground.Height / 2) - (pictureBoxImage.Image.Height / 2); }
                 moveable = true;
             }
             else if (zoom == "Vollbild")
             {
-                pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-                pictureBox.Size = new Size(panel1.Width, panel1.Height);
-                pictureBox.Top = 0;
-                pictureBox.Left = 0;
+                pictureBoxImage.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureBoxImage.Size = new Size(panelImageBackground.Width, panelImageBackground.Height);
+                pictureBoxImage.Top = 0;
+                pictureBoxImage.Left = 0;
                 moveable = false;
             }
             else if (zoom == "Auto")
             {
-                pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-                if(pictureBox.Image.Width>panel1.Width || pictureBox.Image.Height>panel1.Height)
+                pictureBoxImage.SizeMode = PictureBoxSizeMode.Zoom;
+                if(pictureBoxImage.Image.Width>panelImageBackground.Width || pictureBoxImage.Image.Height>panelImageBackground.Height)
                 {
-                    pictureBox.Size = new Size(panel1.Width, panel1.Height);
-                    pictureBox.Top = 0;
-                    pictureBox.Left = 0;
+                    pictureBoxImage.Size = new Size(panelImageBackground.Width, panelImageBackground.Height);
+                    pictureBoxImage.Top = 0;
+                    pictureBoxImage.Left = 0;
                     moveable = false;
                 }
                 else
                 {
-                    pictureBox.Size = new Size(pictureBox.Image.Width, pictureBox.Image.Height);
-                    if (pictureBox.Image.Width > panel1.Width) { pictureBox.Left = (panel1.Width / 2) - (pictureBox.Width / 2); } else { pictureBox.Left = (panel1.Width / 2) - (pictureBox.Image.Width / 2); }
-                    if (pictureBox.Image.Height > panel1.Height) { pictureBox.Top = (panel1.Height / 2) - (pictureBox.Height / 2); } else { pictureBox.Top = (panel1.Height / 2) - (pictureBox.Image.Height / 2); }
+                    pictureBoxImage.Size = new Size(pictureBoxImage.Image.Width, pictureBoxImage.Image.Height);
+                    if (pictureBoxImage.Image.Width > panelImageBackground.Width) { pictureBoxImage.Left = (panelImageBackground.Width / 2) - (pictureBoxImage.Width / 2); } else { pictureBoxImage.Left = (panelImageBackground.Width / 2) - (pictureBoxImage.Image.Width / 2); }
+                    if (pictureBoxImage.Image.Height > panelImageBackground.Height) { pictureBoxImage.Top = (panelImageBackground.Height / 2) - (pictureBoxImage.Height / 2); } else { pictureBoxImage.Top = (panelImageBackground.Height / 2) - (pictureBoxImage.Image.Height / 2); }
                     moveable = true;
                 }
             }
@@ -892,9 +894,9 @@ namespace Mk0.Software.ImageSorter
                 return;
             }
 
-            xFaktor = pictureBox.Width / (double)pictureBox.Image.Width;
-            yFaktor = pictureBox.Height / (double)pictureBox.Image.Height;
-            labelZoom.Text = "x" + Math.Round(yFaktor, 1);
+            xFaktor = pictureBoxImage.Width / (double)pictureBoxImage.Image.Width;
+            yFaktor = pictureBoxImage.Height / (double)pictureBoxImage.Image.Height;
+            labelZoom2.Text = "x" + Math.Round(yFaktor, 1);
         }
 
         /// <summary>
@@ -910,23 +912,23 @@ namespace Mk0.Software.ImageSorter
                 {
                     moving = true;
                     startLocation = e.Location;
-                    pictureBox.Cursor = grabbingCursor;
+                    pictureBoxImage.Cursor = grabbingCursor;
                 }
                 else
                 {
-                    pictureBox.Cursor = Cursors.No;
+                    pictureBoxImage.Cursor = Cursors.No;
                 }
             }
             if (e.Button == MouseButtons.Middle)
             {
                 if (moveable)
                 {
-                    pictureBox.Top = (panel1.Height / 2) - (pictureBox.Height / 2);
-                    pictureBox.Left = (panel1.Width / 2) - (pictureBox.Width / 2);
+                    pictureBoxImage.Top = (panelImageBackground.Height / 2) - (pictureBoxImage.Height / 2);
+                    pictureBoxImage.Left = (panelImageBackground.Width / 2) - (pictureBoxImage.Width / 2);
                 }
                 else
                 {
-                    pictureBox.Cursor = Cursors.No;
+                    pictureBoxImage.Cursor = Cursors.No;
                 }
             }
         }
@@ -941,12 +943,12 @@ namespace Mk0.Software.ImageSorter
             if (moveable && moving)
             {
                 moving = false;
-                if (pictureBox.Top > 0) { pictureBox.Top = 0; }
-                if (pictureBox.Top < -pictureBox.Height + panel1.Height) { pictureBox.Top = -pictureBox.Height + panel1.Height; }
-                if (pictureBox.Left > 0) { pictureBox.Left = 0; }
-                if (pictureBox.Left < -pictureBox.Width + panel1.Width) { pictureBox.Left = -pictureBox.Width + panel1.Width; }
+                if (pictureBoxImage.Top > 0) { pictureBoxImage.Top = 0; }
+                if (pictureBoxImage.Top < -pictureBoxImage.Height + panelImageBackground.Height) { pictureBoxImage.Top = -pictureBoxImage.Height + panelImageBackground.Height; }
+                if (pictureBoxImage.Left > 0) { pictureBoxImage.Left = 0; }
+                if (pictureBoxImage.Left < -pictureBoxImage.Width + panelImageBackground.Width) { pictureBoxImage.Left = -pictureBoxImage.Width + panelImageBackground.Width; }
             }
-            pictureBox.Cursor = grabCursor;
+            pictureBoxImage.Cursor = grabCursor;
         }
 
         /// <summary>
@@ -958,12 +960,12 @@ namespace Mk0.Software.ImageSorter
         {
             if (moving)
             {
-                if (pictureBox.Top > 0) { pictureBox.Top = 0; }
-                if (pictureBox.Top < -pictureBox.Height + panel1.Height) { pictureBox.Top = -pictureBox.Height + panel1.Height; }
-                if (pictureBox.Left > 0) { pictureBox.Left = 0; }
-                if (pictureBox.Left < -pictureBox.Width + panel1.Width) { pictureBox.Left = -pictureBox.Width + panel1.Width; }
-                pictureBox.Top += e.Location.Y - startLocation.Y;
-                pictureBox.Left += e.Location.X - startLocation.X;
+                if (pictureBoxImage.Top > 0) { pictureBoxImage.Top = 0; }
+                if (pictureBoxImage.Top < -pictureBoxImage.Height + panelImageBackground.Height) { pictureBoxImage.Top = -pictureBoxImage.Height + panelImageBackground.Height; }
+                if (pictureBoxImage.Left > 0) { pictureBoxImage.Left = 0; }
+                if (pictureBoxImage.Left < -pictureBoxImage.Width + panelImageBackground.Width) { pictureBoxImage.Left = -pictureBoxImage.Width + panelImageBackground.Width; }
+                pictureBoxImage.Top += e.Location.Y - startLocation.Y;
+                pictureBoxImage.Left += e.Location.X - startLocation.X;
             }
         }
 
@@ -974,41 +976,41 @@ namespace Mk0.Software.ImageSorter
         /// <param name="e"></param>
         private void ZoomInOut(object sender, MouseEventArgs e)
         {
-            if (e.Delta != 0 && pictureBox.Image != null)
+            if (e.Delta != 0 && pictureBoxImage.Image != null)
             {
-                double xstep = pictureBox.Width * 0.01;
-                double ystep = pictureBox.Height * 0.01;
+                double xstep = pictureBoxImage.Width * 0.01;
+                double ystep = pictureBoxImage.Height * 0.01;
                 if (xstep < 1.0) { xstep = 1.0; }
                 if (ystep < 1.0) { ystep = 1.0; }
 
-                int maxWidth = pictureBox.Image.Width * 8;
-                int minWidth = pictureBox.Image.Width / 8;
+                int maxWidth = pictureBoxImage.Image.Width * 8;
+                int minWidth = pictureBoxImage.Image.Width / 8;
 
-                int newWidth = pictureBox.Width - (pictureBox.Width / (int)xstep * (e.Delta / 120));
-                int newHeight = pictureBox.Height - (pictureBox.Height / (int)xstep * (e.Delta / 120));
+                int newWidth = pictureBoxImage.Width - (pictureBoxImage.Width / (int)xstep * (e.Delta / 120));
+                int newHeight = pictureBoxImage.Height - (pictureBoxImage.Height / (int)xstep * (e.Delta / 120));
 
                 if (newWidth <= maxWidth && newWidth >= minWidth)
                 {
-                    pictureBox.Width = newWidth;
-                    pictureBox.Height = newHeight;
+                    pictureBoxImage.Width = newWidth;
+                    pictureBoxImage.Height = newHeight;
                 }
 
-                if (pictureBox.Width > panel1.Width || pictureBox.Height > panel1.Height)
+                if (pictureBoxImage.Width > panelImageBackground.Width || pictureBoxImage.Height > panelImageBackground.Height)
                 {
                     moveable = true;
-                    if (pictureBox.Right < panel1.Width) { pictureBox.Left += -pictureBox.Right + panel1.Width; }
-                    if (pictureBox.Bottom < panel1.Height) { pictureBox.Top += -pictureBox.Bottom + panel1.Height; }
+                    if (pictureBoxImage.Right < panelImageBackground.Width) { pictureBoxImage.Left += -pictureBoxImage.Right + panelImageBackground.Width; }
+                    if (pictureBoxImage.Bottom < panelImageBackground.Height) { pictureBoxImage.Top += -pictureBoxImage.Bottom + panelImageBackground.Height; }
                 }
                 else
                 {
                     moveable = false;
-                    pictureBox.Top = (panel1.Height / 2) - (pictureBox.Height / 2);
-                    pictureBox.Left = (panel1.Width / 2) - (pictureBox.Width / 2);
+                    pictureBoxImage.Top = (panelImageBackground.Height / 2) - (pictureBoxImage.Height / 2);
+                    pictureBoxImage.Left = (panelImageBackground.Width / 2) - (pictureBoxImage.Width / 2);
                 }
 
-                xFaktor = pictureBox.Width / (double)pictureBox.Image.Width;
-                yFaktor = pictureBox.Height / (double)pictureBox.Image.Height;
-                labelZoom.Text = "x" + Math.Round(yFaktor, 1);
+                xFaktor = pictureBoxImage.Width / (double)pictureBoxImage.Image.Width;
+                yFaktor = pictureBoxImage.Height / (double)pictureBoxImage.Image.Height;
+                labelZoom2.Text = "x" + Math.Round(yFaktor, 1);
             }
         }
 
@@ -1019,7 +1021,7 @@ namespace Mk0.Software.ImageSorter
         /// <param name="e"></param>
         private void PictureBox_MouseEnter(object sender, EventArgs e)
         {
-            panel1.Focus();
+            panelImageBackground.Focus();
         }
 
         /// <summary>
@@ -1029,7 +1031,7 @@ namespace Mk0.Software.ImageSorter
         /// <param name="e"></param>
         private void PictureBox_MouseLeave(object sender, EventArgs e)
         {
-            groupBox1.Focus();
+            groupBoxInformationen.Focus();
         }
 
         /// <summary>
@@ -1049,7 +1051,7 @@ namespace Mk0.Software.ImageSorter
         /// <param name="e"></param>
         private void Panel2_MouseEnter(object sender, EventArgs e)
         {
-            panel2.Focus();
+            panelButtons.Focus();
         }
 
         /// <summary>
@@ -1059,14 +1061,14 @@ namespace Mk0.Software.ImageSorter
         /// <param name="e"></param>
         private void ToolStripMenuItemOpenExplorer_Click(object sender, EventArgs e)
         {
-            if (File.Exists(pictureBox.ImageLocation))
+            if (File.Exists(pictureBoxImage.ImageLocation))
             {
-                Process.Start("explorer.exe", @"/select, " + pictureBox.ImageLocation);
+                Process.Start("explorer.exe", @"/select, " + pictureBoxImage.ImageLocation);
             }
 
-            else if (Directory.Exists(Path.GetDirectoryName(pictureBox.ImageLocation)))
+            else if (Directory.Exists(Path.GetDirectoryName(pictureBoxImage.ImageLocation)))
             {
-                Process.Start("explorer.exe", Path.GetDirectoryName(pictureBox.ImageLocation));
+                Process.Start("explorer.exe", Path.GetDirectoryName(pictureBoxImage.ImageLocation));
             }
         }
 
@@ -1077,9 +1079,9 @@ namespace Mk0.Software.ImageSorter
         /// <param name="e"></param>
         private void ToolStripMenuItemImageDetails_Click(object sender, EventArgs e)
         {
-            using (Image img = Image.FromFile(pictureBox.ImageLocation))
+            using (Image img = Image.FromFile(pictureBoxImage.ImageLocation))
             {
-                FileInfo info = new FileInfo(pictureBox.ImageLocation);
+                FileInfo info = new FileInfo(pictureBoxImage.ImageLocation);
                 ImageFormat format = img.RawFormat;
                 MessageBox.Show("Dateiname: " + info.Name + Environment.NewLine +
                                 "Pfad: " + info.DirectoryName + Environment.NewLine +
@@ -1102,7 +1104,7 @@ namespace Mk0.Software.ImageSorter
         /// <param name="e"></param>
         private void ToolStripMenuItemEditImage_Click(object sender, EventArgs e)
         {
-            FileInfo info = new FileInfo(pictureBox.ImageLocation);
+            FileInfo info = new FileInfo(pictureBoxImage.ImageLocation);
             ProcessStartInfo pi = new ProcessStartInfo
             {
                 FileName = ("mspaint.exe"),
@@ -1125,11 +1127,11 @@ namespace Mk0.Software.ImageSorter
         /// <param name="e"></param>
         private void BildZuschneidenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Cropper cropper = new Cropper(pictureBox.ImageLocation);
+            Cropper cropper = new Cropper(pictureBoxImage.ImageLocation);
             DialogResult result = cropper.ShowDialog(this);
             if (result == DialogResult.OK)
             {
-                string del = pictureBox.ImageLocation;
+                string del = pictureBoxImage.ImageLocation;
                 images[imageIndex] = cropper.NewFileLocation;
                 LoadPicture(imageIndex);
                 FileSystem.DeleteFile(del, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin, UICancelOption.DoNothing);
@@ -1152,7 +1154,7 @@ namespace Mk0.Software.ImageSorter
             Properties.Settings.Default.lastHeight = Height;
             Properties.Settings.Default.lastTop = Top;
             Properties.Settings.Default.lastLeft = Left;
-            Properties.Settings.Default.showInfo = groupBox1.Visible;
+            Properties.Settings.Default.showInfo = groupBoxInformationen.Visible;
             Properties.Settings.Default.Save();
         }
 
@@ -1205,7 +1207,7 @@ namespace Mk0.Software.ImageSorter
         /// <param name="bildpfad"></param>
         private void ShowDuplicatedMessage(Image bild, string bildpfad)
         {
-            banner.Enqueue("Das Duplikat \"" + Path.GetFileName(bildpfad) + "\" wurde", "erstellt.", bild, Properties.Resources.duplicate);
+            banner.Enqueue("Das Duplikat \"" + Path.GetFileName(bildpfad) + "\"", "wurde erstellt.", bild, Properties.Resources.duplicate);
             banner.ShowMessages();
         }
 
@@ -1318,7 +1320,7 @@ namespace Mk0.Software.ImageSorter
             Properties.Settings.Default.zoom = comboBoxZoom.SelectedIndex;
             Properties.Settings.Default.Save();
 
-            if(pictureBox.Image != null)
+            if(pictureBoxImage.Image != null)
             {
                 Zoom();
             }
@@ -1355,19 +1357,19 @@ namespace Mk0.Software.ImageSorter
         /// <param name="e"></param>
         private void ButtonInfo_Click(object sender, EventArgs e)
         {
-            if(groupBox1.Visible)
+            if(groupBoxInformationen.Visible)
             {
                 //ausblenden
-                groupBox1.Visible = false;
-                groupBox2.Location = new Point(groupBox2.Location.X, 12);
-                groupBox2.Height = groupBox2.Height + 87;
+                groupBoxInformationen.Visible = false;
+                groupBoxZiele.Location = new Point(groupBoxZiele.Location.X, 12);
+                groupBoxZiele.Height = groupBoxZiele.Height + 87;
             }
             else
             {
                 //einblenden
-                groupBox1.Visible = true;
-                groupBox2.Location = new Point(groupBox2.Location.X, 99);
-                groupBox2.Height = groupBox2.Height - 87;
+                groupBoxInformationen.Visible = true;
+                groupBoxZiele.Location = new Point(groupBoxZiele.Location.X, 99);
+                groupBoxZiele.Height = groupBoxZiele.Height - 87;
             }
         }
 
@@ -1392,15 +1394,15 @@ namespace Mk0.Software.ImageSorter
         }
 
         /// <summary>
-        /// 
+        /// Duplikat von aktuellem Bild erzeugen
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonDuplicate_Click(object sender, EventArgs e)
         {
             //aktuelles bild kopieren
-            string targetPath = Path.Combine(Path.GetDirectoryName(pictureBox.ImageLocation), Path.GetFileNameWithoutExtension(pictureBox.ImageLocation) + Randomize.NumberAndDigits(5, "_") + Path.GetExtension(pictureBox.ImageLocation));
-            File.Copy(pictureBox.ImageLocation, targetPath, true);
+            string targetPath = Path.Combine(Path.GetDirectoryName(pictureBoxImage.ImageLocation), Path.GetFileNameWithoutExtension(pictureBoxImage.ImageLocation) + Randomize.NumberAndDigits(5, "_") + Path.GetExtension(pictureBoxImage.ImageLocation));
+            File.Copy(pictureBoxImage.ImageLocation, targetPath, true);
 
             //duplikat als nächstes bild in liste aufnehmen
             images.Insert(imageIndex + 1, targetPath);
@@ -1409,6 +1411,119 @@ namespace Mk0.Software.ImageSorter
             //duplikat-message anzeigen
             Image myImg = CopyImage.GetCopyImage(targetPath);
             ShowDuplicatedMessage(myImg, targetPath);
+        }
+
+        /// <summary>
+        /// Untermenü für Transformation ein-/ausblenden
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonTransformation_Click(object sender, EventArgs e)
+        {
+            groupBoxTransformation.Visible = !groupBoxTransformation.Visible;
+        }
+
+        /// <summary>
+        /// Hintergrund hell/dunkel schalten
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonHintergrund_Click(object sender, EventArgs e)
+        {
+            if(panelImageBackground.BackColor==Color.Black)
+            {
+                panelImageBackground.BackColor = SystemColors.Control;
+                pictureBoxImage.BackColor = SystemColors.Control;
+            }
+            else
+            {
+                panelImageBackground.BackColor = Color.Black;
+                pictureBoxImage.BackColor = Color.Black;
+            }
+        }
+
+        /// <summary>
+        /// Ränder schneiden Untermenü ein-/ausblenden
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonRander_Click(object sender, EventArgs e)
+        {
+            groupBoxRander.Visible = !groupBoxRander.Visible;
+        }
+
+        /// <summary>
+        /// Rand von Bild schneiden
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RandSchneiden_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            string cutString = btn.Tag.ToString();
+            Image im = pictureBoxImage.Image;
+
+            int move = (int)numericUpDownRander.Value;
+            int x = 0, y = 0, width = im.Width, height = im.Height;
+
+            if (cutString == "links")
+            {
+                x += move;
+                width -= move;
+            }
+            else if (cutString == "rechts")
+            {
+                width -= move;
+            }
+            else if (cutString == "oben")
+            {
+                y += move;
+                height -= move;
+            }
+            else if (cutString == "unten")
+            {
+                height -= move;
+            }
+
+            Rectangle r = new Rectangle(x, y, width, height);
+            Image res = CropImage(im, r);
+
+            string folder = Path.GetDirectoryName(pictureBoxImage.ImageLocation);
+            string file = Path.GetFileNameWithoutExtension(pictureBoxImage.ImageLocation) + "_cut";
+            string ext = Path.GetExtension(pictureBoxImage.ImageLocation);
+            string newFileLocation = Path.Combine(folder, file + ext);
+            string del = pictureBoxImage.ImageLocation;
+            if (ext == ".png")
+            {
+                res.Save(newFileLocation, ImageFormat.Png);
+            }
+            else if (ext == ".gif")
+            {
+                res.Save(newFileLocation, ImageFormat.Gif);
+            }
+            else
+            {
+                res.Save(newFileLocation, ImageFormat.Jpeg);
+            }
+            images[imageIndex] = newFileLocation;
+            LoadPicture(imageIndex);
+            FileSystem.DeleteFile(del, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin, UICancelOption.DoNothing);
+
+            groupBoxRander.Visible = false;
+        }
+
+        /// <summary>
+        /// schneidet Bilder aus
+        /// </summary>
+        /// <param name="img"></param>
+        /// <param name="cropArea"></param>
+        /// <returns></returns>
+        private static Image CropImage(Image img, Rectangle cropArea)
+        {
+            Bitmap bmpImage = new Bitmap(img);
+            Bitmap bmpCrop = bmpImage.Clone(cropArea,
+            bmpImage.PixelFormat);
+            return (Image)(bmpCrop);
         }
     }
 }

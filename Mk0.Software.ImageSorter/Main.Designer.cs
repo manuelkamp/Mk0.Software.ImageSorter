@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.pictureBoxImage = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemCropImage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemEditImage = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,15 +38,15 @@
             this.toolStripMenuItemImageDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonSettings = new System.Windows.Forms.Button();
             this.labelQuellPath = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxInformationen = new System.Windows.Forms.GroupBox();
             this.labelCounter = new System.Windows.Forms.Label();
             this.labelZielPath = new System.Windows.Forms.Label();
             this.buttonQuellPfad = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBoxZiele = new System.Windows.Forms.GroupBox();
             this.buttonLastImage = new System.Windows.Forms.Button();
             this.buttonInfo = new System.Windows.Forms.Button();
             this.buttonJumpBack = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelButtons = new System.Windows.Forms.Panel();
             this.labelNoTargets = new System.Windows.Forms.Label();
             this.buttonJumpForward = new System.Windows.Forms.Button();
             this.buttonUndo = new System.Windows.Forms.Button();
@@ -56,49 +56,63 @@
             this.buttonRotate270 = new System.Windows.Forms.Button();
             this.buttonMirrorHorizontal = new System.Windows.Forms.Button();
             this.buttonMirrorVertikal = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelImageBackground = new System.Windows.Forms.Panel();
             this.labelNoImages = new System.Windows.Forms.Label();
-            this.labelZoom = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.groupBoxRander = new System.Windows.Forms.GroupBox();
+            this.labelRander = new System.Windows.Forms.Label();
+            this.numericUpDownRander = new System.Windows.Forms.NumericUpDown();
+            this.buttonRandLinks = new System.Windows.Forms.Button();
+            this.buttonRandRechts = new System.Windows.Forms.Button();
+            this.buttonRandUnten = new System.Windows.Forms.Button();
+            this.buttonRandOben = new System.Windows.Forms.Button();
+            this.labelZoom2 = new System.Windows.Forms.Label();
+            this.panelBanner = new System.Windows.Forms.Panel();
+            this.pictureBoxBanner2 = new System.Windows.Forms.PictureBox();
+            this.labelBanner2 = new System.Windows.Forms.Label();
+            this.labelBanner1 = new System.Windows.Forms.Label();
+            this.pictureBoxBanner1 = new System.Windows.Forms.PictureBox();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.comboBoxZoom = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelZoom1 = new System.Windows.Forms.Label();
             this.buttonDuplicate = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            this.groupBoxTransformation = new System.Windows.Forms.GroupBox();
+            this.buttonTransformation = new System.Windows.Forms.Button();
+            this.buttonHintergrund = new System.Windows.Forms.Button();
+            this.buttonRander = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBoxInformationen.SuspendLayout();
+            this.groupBoxZiele.SuspendLayout();
+            this.panelButtons.SuspendLayout();
+            this.panelImageBackground.SuspendLayout();
+            this.groupBoxRander.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRander)).BeginInit();
+            this.panelBanner.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBanner2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBanner1)).BeginInit();
+            this.groupBoxTransformation.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pictureBox
+            // pictureBoxImage
             // 
-            this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pictureBoxImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox.ContextMenuStrip = this.contextMenuStrip;
-            this.pictureBox.ImageLocation = "";
-            this.pictureBox.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(682, 526);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox.TabIndex = 0;
-            this.pictureBox.TabStop = false;
-            this.pictureBox.LoadCompleted += new System.ComponentModel.AsyncCompletedEventHandler(this.PictureBox_LoadCompleted);
-            this.pictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
-            this.pictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
-            this.pictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
-            this.pictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseMove);
-            this.pictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseUp);
+            this.pictureBoxImage.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBoxImage.ContextMenuStrip = this.contextMenuStrip;
+            this.pictureBoxImage.ImageLocation = "";
+            this.pictureBoxImage.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxImage.Name = "pictureBoxImage";
+            this.pictureBoxImage.Size = new System.Drawing.Size(682, 526);
+            this.pictureBoxImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxImage.TabIndex = 0;
+            this.pictureBoxImage.TabStop = false;
+            this.pictureBoxImage.LoadCompleted += new System.ComponentModel.AsyncCompletedEventHandler(this.PictureBox_LoadCompleted);
+            this.pictureBoxImage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
+            this.pictureBoxImage.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
+            this.pictureBoxImage.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
+            this.pictureBoxImage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseMove);
+            this.pictureBoxImage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseUp);
             // 
             // contextMenuStrip
             // 
@@ -160,18 +174,18 @@
             this.labelQuellPath.TabIndex = 2;
             this.labelQuellPath.Text = "C:/dummypfad";
             // 
-            // groupBox1
+            // groupBoxInformationen
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.labelCounter);
-            this.groupBox1.Controls.Add(this.labelQuellPath);
-            this.groupBox1.Controls.Add(this.labelZielPath);
-            this.groupBox1.Location = new System.Drawing.Point(694, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(262, 81);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Informationen";
+            this.groupBoxInformationen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxInformationen.Controls.Add(this.labelCounter);
+            this.groupBoxInformationen.Controls.Add(this.labelQuellPath);
+            this.groupBoxInformationen.Controls.Add(this.labelZielPath);
+            this.groupBoxInformationen.Location = new System.Drawing.Point(694, 12);
+            this.groupBoxInformationen.Name = "groupBoxInformationen";
+            this.groupBoxInformationen.Size = new System.Drawing.Size(262, 81);
+            this.groupBoxInformationen.TabIndex = 3;
+            this.groupBoxInformationen.TabStop = false;
+            this.groupBoxInformationen.Text = "Informationen";
             // 
             // labelCounter
             // 
@@ -204,24 +218,24 @@
             this.buttonQuellPfad.UseVisualStyleBackColor = true;
             this.buttonQuellPfad.Click += new System.EventHandler(this.ButtonQuellPfad_Click);
             // 
-            // groupBox2
+            // groupBoxZiele
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.groupBoxZiele.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.buttonLastImage);
-            this.groupBox2.Controls.Add(this.buttonInfo);
-            this.groupBox2.Controls.Add(this.buttonQuellPfad);
-            this.groupBox2.Controls.Add(this.buttonSettings);
-            this.groupBox2.Controls.Add(this.buttonJumpBack);
-            this.groupBox2.Controls.Add(this.panel2);
-            this.groupBox2.Controls.Add(this.buttonJumpForward);
-            this.groupBox2.Controls.Add(this.buttonUndo);
-            this.groupBox2.Location = new System.Drawing.Point(694, 99);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(262, 433);
-            this.groupBox2.TabIndex = 4;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Ziele";
+            this.groupBoxZiele.Controls.Add(this.buttonLastImage);
+            this.groupBoxZiele.Controls.Add(this.buttonInfo);
+            this.groupBoxZiele.Controls.Add(this.buttonQuellPfad);
+            this.groupBoxZiele.Controls.Add(this.buttonSettings);
+            this.groupBoxZiele.Controls.Add(this.buttonJumpBack);
+            this.groupBoxZiele.Controls.Add(this.panelButtons);
+            this.groupBoxZiele.Controls.Add(this.buttonJumpForward);
+            this.groupBoxZiele.Controls.Add(this.buttonUndo);
+            this.groupBoxZiele.Location = new System.Drawing.Point(694, 99);
+            this.groupBoxZiele.Name = "groupBoxZiele";
+            this.groupBoxZiele.Size = new System.Drawing.Size(262, 433);
+            this.groupBoxZiele.TabIndex = 4;
+            this.groupBoxZiele.TabStop = false;
+            this.groupBoxZiele.Text = "Ziele";
             // 
             // buttonLastImage
             // 
@@ -258,18 +272,18 @@
             this.buttonJumpBack.UseVisualStyleBackColor = true;
             this.buttonJumpBack.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ButtonJumpBack_Click);
             // 
-            // panel2
+            // panelButtons
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panelButtons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel2.AutoScroll = true;
-            this.panel2.Controls.Add(this.labelNoTargets);
-            this.panel2.Location = new System.Drawing.Point(3, 45);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(258, 382);
-            this.panel2.TabIndex = 5;
-            this.panel2.MouseEnter += new System.EventHandler(this.Panel2_MouseEnter);
-            this.panel2.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
+            this.panelButtons.AutoScroll = true;
+            this.panelButtons.Controls.Add(this.labelNoTargets);
+            this.panelButtons.Location = new System.Drawing.Point(3, 45);
+            this.panelButtons.Name = "panelButtons";
+            this.panelButtons.Size = new System.Drawing.Size(258, 382);
+            this.panelButtons.TabIndex = 5;
+            this.panelButtons.MouseEnter += new System.EventHandler(this.Panel2_MouseEnter);
+            this.panelButtons.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
             // 
             // labelNoTargets
             // 
@@ -321,7 +335,7 @@
             // buttonRotate90
             // 
             this.buttonRotate90.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonRotate90.Location = new System.Drawing.Point(112, 538);
+            this.buttonRotate90.Location = new System.Drawing.Point(6, 20);
             this.buttonRotate90.Name = "buttonRotate90";
             this.buttonRotate90.Size = new System.Drawing.Size(95, 23);
             this.buttonRotate90.TabIndex = 6;
@@ -333,7 +347,7 @@
             // buttonRotate180
             // 
             this.buttonRotate180.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonRotate180.Location = new System.Drawing.Point(213, 538);
+            this.buttonRotate180.Location = new System.Drawing.Point(6, 49);
             this.buttonRotate180.Name = "buttonRotate180";
             this.buttonRotate180.Size = new System.Drawing.Size(95, 23);
             this.buttonRotate180.TabIndex = 7;
@@ -345,7 +359,7 @@
             // buttonRotate270
             // 
             this.buttonRotate270.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonRotate270.Location = new System.Drawing.Point(314, 538);
+            this.buttonRotate270.Location = new System.Drawing.Point(6, 78);
             this.buttonRotate270.Name = "buttonRotate270";
             this.buttonRotate270.Size = new System.Drawing.Size(95, 23);
             this.buttonRotate270.TabIndex = 8;
@@ -357,7 +371,7 @@
             // buttonMirrorHorizontal
             // 
             this.buttonMirrorHorizontal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonMirrorHorizontal.Location = new System.Drawing.Point(420, 538);
+            this.buttonMirrorHorizontal.Location = new System.Drawing.Point(6, 112);
             this.buttonMirrorHorizontal.Name = "buttonMirrorHorizontal";
             this.buttonMirrorHorizontal.Size = new System.Drawing.Size(95, 23);
             this.buttonMirrorHorizontal.TabIndex = 9;
@@ -369,7 +383,7 @@
             // buttonMirrorVertikal
             // 
             this.buttonMirrorVertikal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonMirrorVertikal.Location = new System.Drawing.Point(521, 538);
+            this.buttonMirrorVertikal.Location = new System.Drawing.Point(6, 141);
             this.buttonMirrorVertikal.Name = "buttonMirrorVertikal";
             this.buttonMirrorVertikal.Size = new System.Drawing.Size(95, 23);
             this.buttonMirrorVertikal.TabIndex = 10;
@@ -378,19 +392,19 @@
             this.buttonMirrorVertikal.UseVisualStyleBackColor = true;
             this.buttonMirrorVertikal.Click += new System.EventHandler(this.ImageMirror);
             // 
-            // panel1
+            // panelImageBackground
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panelImageBackground.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.Controls.Add(this.labelNoImages);
-            this.panel1.Controls.Add(this.pictureBox);
-            this.panel1.Location = new System.Drawing.Point(6, 6);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(682, 526);
-            this.panel1.TabIndex = 3;
-            this.panel1.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.ZoomInOut);
+            this.panelImageBackground.BackColor = System.Drawing.SystemColors.Control;
+            this.panelImageBackground.Controls.Add(this.labelNoImages);
+            this.panelImageBackground.Controls.Add(this.pictureBoxImage);
+            this.panelImageBackground.Location = new System.Drawing.Point(6, 6);
+            this.panelImageBackground.Name = "panelImageBackground";
+            this.panelImageBackground.Size = new System.Drawing.Size(682, 526);
+            this.panelImageBackground.TabIndex = 3;
+            this.panelImageBackground.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.ZoomInOut);
             // 
             // labelNoImages
             // 
@@ -407,68 +421,164 @@
     "zu sortieren.\r\nErlaubte Dateiformate sind (JPG, PNG, GIF, BMP, TIF).";
             this.labelNoImages.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // labelZoom
+            // groupBoxRander
             // 
-            this.labelZoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelZoom.AutoSize = true;
-            this.labelZoom.Location = new System.Drawing.Point(924, 543);
-            this.labelZoom.Name = "labelZoom";
-            this.labelZoom.Size = new System.Drawing.Size(18, 13);
-            this.labelZoom.TabIndex = 13;
-            this.labelZoom.Text = "x1";
+            this.groupBoxRander.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBoxRander.Controls.Add(this.labelRander);
+            this.groupBoxRander.Controls.Add(this.numericUpDownRander);
+            this.groupBoxRander.Controls.Add(this.buttonRandLinks);
+            this.groupBoxRander.Controls.Add(this.buttonRandRechts);
+            this.groupBoxRander.Controls.Add(this.buttonRandUnten);
+            this.groupBoxRander.Controls.Add(this.buttonRandOben);
+            this.groupBoxRander.Location = new System.Drawing.Point(428, 362);
+            this.groupBoxRander.Name = "groupBoxRander";
+            this.groupBoxRander.Size = new System.Drawing.Size(109, 171);
+            this.groupBoxRander.TabIndex = 18;
+            this.groupBoxRander.TabStop = false;
+            this.groupBoxRander.Text = "Ränder schneiden";
+            this.groupBoxRander.Visible = false;
             // 
-            // panel3
+            // labelRander
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.labelRander.AutoSize = true;
+            this.labelRander.Location = new System.Drawing.Point(53, 30);
+            this.labelRander.Name = "labelRander";
+            this.labelRander.Size = new System.Drawing.Size(21, 13);
+            this.labelRander.TabIndex = 12;
+            this.labelRander.Text = "px.";
+            // 
+            // numericUpDownRander
+            // 
+            this.numericUpDownRander.Location = new System.Drawing.Point(6, 28);
+            this.numericUpDownRander.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownRander.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownRander.Name = "numericUpDownRander";
+            this.numericUpDownRander.Size = new System.Drawing.Size(41, 20);
+            this.numericUpDownRander.TabIndex = 11;
+            this.numericUpDownRander.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // buttonRandLinks
+            // 
+            this.buttonRandLinks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonRandLinks.Location = new System.Drawing.Point(6, 54);
+            this.buttonRandLinks.Name = "buttonRandLinks";
+            this.buttonRandLinks.Size = new System.Drawing.Size(95, 23);
+            this.buttonRandLinks.TabIndex = 7;
+            this.buttonRandLinks.Tag = "links";
+            this.buttonRandLinks.Text = "links";
+            this.buttonRandLinks.UseVisualStyleBackColor = true;
+            this.buttonRandLinks.Click += new System.EventHandler(this.RandSchneiden_Click);
+            // 
+            // buttonRandRechts
+            // 
+            this.buttonRandRechts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonRandRechts.Location = new System.Drawing.Point(6, 83);
+            this.buttonRandRechts.Name = "buttonRandRechts";
+            this.buttonRandRechts.Size = new System.Drawing.Size(95, 23);
+            this.buttonRandRechts.TabIndex = 8;
+            this.buttonRandRechts.Tag = "rechts";
+            this.buttonRandRechts.Text = "rechts";
+            this.buttonRandRechts.UseVisualStyleBackColor = true;
+            this.buttonRandRechts.Click += new System.EventHandler(this.RandSchneiden_Click);
+            // 
+            // buttonRandUnten
+            // 
+            this.buttonRandUnten.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonRandUnten.Location = new System.Drawing.Point(6, 141);
+            this.buttonRandUnten.Name = "buttonRandUnten";
+            this.buttonRandUnten.Size = new System.Drawing.Size(95, 23);
+            this.buttonRandUnten.TabIndex = 10;
+            this.buttonRandUnten.Tag = "unten";
+            this.buttonRandUnten.Text = "unten";
+            this.buttonRandUnten.UseVisualStyleBackColor = true;
+            this.buttonRandUnten.Click += new System.EventHandler(this.RandSchneiden_Click);
+            // 
+            // buttonRandOben
+            // 
+            this.buttonRandOben.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonRandOben.Location = new System.Drawing.Point(6, 112);
+            this.buttonRandOben.Name = "buttonRandOben";
+            this.buttonRandOben.Size = new System.Drawing.Size(95, 23);
+            this.buttonRandOben.TabIndex = 9;
+            this.buttonRandOben.Tag = "oben";
+            this.buttonRandOben.Text = "oben";
+            this.buttonRandOben.UseVisualStyleBackColor = true;
+            this.buttonRandOben.Click += new System.EventHandler(this.RandSchneiden_Click);
+            // 
+            // labelZoom2
+            // 
+            this.labelZoom2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelZoom2.AutoSize = true;
+            this.labelZoom2.Location = new System.Drawing.Point(924, 543);
+            this.labelZoom2.Name = "labelZoom2";
+            this.labelZoom2.Size = new System.Drawing.Size(18, 13);
+            this.labelZoom2.TabIndex = 13;
+            this.labelZoom2.Text = "x1";
+            // 
+            // panelBanner
+            // 
+            this.panelBanner.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel3.Controls.Add(this.pictureBox2);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.pictureBox1);
-            this.panel3.Location = new System.Drawing.Point(0, -52);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(688, 52);
-            this.panel3.TabIndex = 2;
+            this.panelBanner.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panelBanner.Controls.Add(this.pictureBoxBanner2);
+            this.panelBanner.Controls.Add(this.labelBanner2);
+            this.panelBanner.Controls.Add(this.labelBanner1);
+            this.panelBanner.Controls.Add(this.pictureBoxBanner1);
+            this.panelBanner.Location = new System.Drawing.Point(0, -52);
+            this.panelBanner.Name = "panelBanner";
+            this.panelBanner.Size = new System.Drawing.Size(688, 52);
+            this.panelBanner.TabIndex = 2;
             // 
-            // pictureBox2
+            // pictureBoxBanner2
             // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.Location = new System.Drawing.Point(634, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(51, 47);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
+            this.pictureBoxBanner2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxBanner2.Location = new System.Drawing.Point(634, 3);
+            this.pictureBoxBanner2.Name = "pictureBoxBanner2";
+            this.pictureBoxBanner2.Size = new System.Drawing.Size(51, 47);
+            this.pictureBoxBanner2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxBanner2.TabIndex = 3;
+            this.pictureBoxBanner2.TabStop = false;
             // 
-            // label2
+            // labelBanner2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(56, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(194, 16);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "\"Pfadangabe\" verschoben.";
+            this.labelBanner2.AutoSize = true;
+            this.labelBanner2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBanner2.Location = new System.Drawing.Point(56, 27);
+            this.labelBanner2.Name = "labelBanner2";
+            this.labelBanner2.Size = new System.Drawing.Size(194, 16);
+            this.labelBanner2.TabIndex = 2;
+            this.labelBanner2.Text = "\"Pfadangabe\" verschoben.";
             // 
-            // label1
+            // labelBanner1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(57, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(241, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Bild \"Dateiname\" erfolgreich nach";
+            this.labelBanner1.AutoSize = true;
+            this.labelBanner1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBanner1.Location = new System.Drawing.Point(57, 7);
+            this.labelBanner1.Name = "labelBanner1";
+            this.labelBanner1.Size = new System.Drawing.Size(241, 16);
+            this.labelBanner1.TabIndex = 1;
+            this.labelBanner1.Text = "Bild \"Dateiname\" erfolgreich nach";
             // 
-            // pictureBox1
+            // pictureBoxBanner1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 46);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxBanner1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxBanner1.Name = "pictureBoxBanner1";
+            this.pictureBoxBanner1.Size = new System.Drawing.Size(48, 46);
+            this.pictureBoxBanner1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxBanner1.TabIndex = 0;
+            this.pictureBoxBanner1.TabStop = false;
             // 
             // comboBoxZoom
             // 
@@ -485,70 +595,126 @@
             this.comboBoxZoom.TabIndex = 14;
             this.comboBoxZoom.SelectedIndexChanged += new System.EventHandler(this.ComboBoxZoom_SelectedIndexChanged);
             // 
-            // label3
+            // labelZoom1
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(759, 543);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(34, 13);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Zoom";
+            this.labelZoom1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelZoom1.AutoSize = true;
+            this.labelZoom1.Location = new System.Drawing.Point(759, 543);
+            this.labelZoom1.Name = "labelZoom1";
+            this.labelZoom1.Size = new System.Drawing.Size(34, 13);
+            this.labelZoom1.TabIndex = 15;
+            this.labelZoom1.Text = "Zoom";
             // 
             // buttonDuplicate
             // 
             this.buttonDuplicate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonDuplicate.Location = new System.Drawing.Point(627, 538);
+            this.buttonDuplicate.Location = new System.Drawing.Point(220, 538);
             this.buttonDuplicate.Name = "buttonDuplicate";
             this.buttonDuplicate.Size = new System.Drawing.Size(95, 23);
             this.buttonDuplicate.TabIndex = 16;
-            this.buttonDuplicate.Tag = "x";
+            this.buttonDuplicate.Tag = "";
             this.buttonDuplicate.Text = "Duplizieren";
             this.buttonDuplicate.UseVisualStyleBackColor = true;
             this.buttonDuplicate.Click += new System.EventHandler(this.ButtonDuplicate_Click);
+            // 
+            // groupBoxTransformation
+            // 
+            this.groupBoxTransformation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBoxTransformation.Controls.Add(this.buttonRotate90);
+            this.groupBoxTransformation.Controls.Add(this.buttonRotate180);
+            this.groupBoxTransformation.Controls.Add(this.buttonRotate270);
+            this.groupBoxTransformation.Controls.Add(this.buttonMirrorVertikal);
+            this.groupBoxTransformation.Controls.Add(this.buttonMirrorHorizontal);
+            this.groupBoxTransformation.Location = new System.Drawing.Point(108, 362);
+            this.groupBoxTransformation.Name = "groupBoxTransformation";
+            this.groupBoxTransformation.Size = new System.Drawing.Size(109, 171);
+            this.groupBoxTransformation.TabIndex = 17;
+            this.groupBoxTransformation.TabStop = false;
+            this.groupBoxTransformation.Text = "Transformation";
+            this.groupBoxTransformation.Visible = false;
+            // 
+            // buttonTransformation
+            // 
+            this.buttonTransformation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonTransformation.Location = new System.Drawing.Point(113, 538);
+            this.buttonTransformation.Name = "buttonTransformation";
+            this.buttonTransformation.Size = new System.Drawing.Size(95, 23);
+            this.buttonTransformation.TabIndex = 18;
+            this.buttonTransformation.Tag = "";
+            this.buttonTransformation.Text = "Transformation";
+            this.buttonTransformation.UseVisualStyleBackColor = true;
+            this.buttonTransformation.Click += new System.EventHandler(this.ButtonTransformation_Click);
+            // 
+            // buttonHintergrund
+            // 
+            this.buttonHintergrund.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonHintergrund.Location = new System.Drawing.Point(327, 538);
+            this.buttonHintergrund.Name = "buttonHintergrund";
+            this.buttonHintergrund.Size = new System.Drawing.Size(95, 23);
+            this.buttonHintergrund.TabIndex = 19;
+            this.buttonHintergrund.Tag = "";
+            this.buttonHintergrund.Text = "hell/dunkel";
+            this.buttonHintergrund.UseVisualStyleBackColor = true;
+            this.buttonHintergrund.Click += new System.EventHandler(this.ButtonHintergrund_Click);
+            // 
+            // buttonRander
+            // 
+            this.buttonRander.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonRander.Location = new System.Drawing.Point(434, 538);
+            this.buttonRander.Name = "buttonRander";
+            this.buttonRander.Size = new System.Drawing.Size(95, 23);
+            this.buttonRander.TabIndex = 20;
+            this.buttonRander.Tag = "";
+            this.buttonRander.Text = "Ränder";
+            this.buttonRander.UseVisualStyleBackColor = true;
+            this.buttonRander.Click += new System.EventHandler(this.ButtonRander_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(967, 566);
+            this.Controls.Add(this.buttonHintergrund);
+            this.Controls.Add(this.buttonTransformation);
+            this.Controls.Add(this.groupBoxTransformation);
+            this.Controls.Add(this.groupBoxRander);
             this.Controls.Add(this.buttonDuplicate);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelZoom1);
             this.Controls.Add(this.comboBoxZoom);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.labelZoom);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.buttonMirrorVertikal);
-            this.Controls.Add(this.buttonMirrorHorizontal);
-            this.Controls.Add(this.buttonRotate270);
-            this.Controls.Add(this.buttonRotate180);
-            this.Controls.Add(this.buttonRotate90);
+            this.Controls.Add(this.panelBanner);
+            this.Controls.Add(this.labelZoom2);
+            this.Controls.Add(this.panelImageBackground);
             this.Controls.Add(this.buttonDeleteImage);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxZiele);
+            this.Controls.Add(this.groupBoxInformationen);
+            this.Controls.Add(this.buttonRander);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(983, 605);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Image Sorter v1.39 | © 2015-2019 by manuelkamper.com";
+            this.Text = "Image Sorter v1.40 | © 2015-2019 by manuelkamper.com";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             this.Shown += new System.EventHandler(this.Main_Shown);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_KeyDown);
             this.Resize += new System.EventHandler(this.Main_ResizeEnd);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).EndInit();
             this.contextMenuStrip.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBoxInformationen.ResumeLayout(false);
+            this.groupBoxInformationen.PerformLayout();
+            this.groupBoxZiele.ResumeLayout(false);
+            this.panelButtons.ResumeLayout(false);
+            this.panelButtons.PerformLayout();
+            this.panelImageBackground.ResumeLayout(false);
+            this.groupBoxRander.ResumeLayout(false);
+            this.groupBoxRander.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRander)).EndInit();
+            this.panelBanner.ResumeLayout(false);
+            this.panelBanner.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBanner2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBanner1)).EndInit();
+            this.groupBoxTransformation.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -556,11 +722,11 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox;
+        private System.Windows.Forms.PictureBox pictureBoxImage;
         private System.Windows.Forms.Button buttonSettings;
         private System.Windows.Forms.Label labelQuellPath;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxInformationen;
+        private System.Windows.Forms.GroupBox groupBoxZiele;
         private System.Windows.Forms.Label labelNoTargets;
         private System.Windows.Forms.Button buttonJumpForward;
         private System.Windows.Forms.Label labelCounter;
@@ -571,28 +737,39 @@
         private System.Windows.Forms.Button buttonRotate270;
         private System.Windows.Forms.Button buttonMirrorHorizontal;
         private System.Windows.Forms.Button buttonMirrorVertikal;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label labelZoom;
+        private System.Windows.Forms.Panel panelImageBackground;
+        private System.Windows.Forms.Label labelZoom2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemEditImage;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOpenExplorer;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemImageDetails;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelButtons;
         private System.Windows.Forms.Label labelNoImages;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Panel panelBanner;
+        private System.Windows.Forms.Label labelBanner2;
+        private System.Windows.Forms.Label labelBanner1;
+        private System.Windows.Forms.PictureBox pictureBoxBanner1;
+        private System.Windows.Forms.PictureBox pictureBoxBanner2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCropImage;
         private System.Windows.Forms.Button buttonQuellPfad;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.Label labelZielPath;
         private System.Windows.Forms.ComboBox comboBoxZoom;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelZoom1;
         private System.Windows.Forms.Button buttonJumpBack;
         private System.Windows.Forms.Button buttonInfo;
         private System.Windows.Forms.Button buttonLastImage;
         private System.Windows.Forms.Button buttonDuplicate;
+        private System.Windows.Forms.GroupBox groupBoxTransformation;
+        private System.Windows.Forms.Button buttonTransformation;
+        private System.Windows.Forms.Button buttonHintergrund;
+        private System.Windows.Forms.Button buttonRander;
+        private System.Windows.Forms.GroupBox groupBoxRander;
+        private System.Windows.Forms.Label labelRander;
+        private System.Windows.Forms.NumericUpDown numericUpDownRander;
+        private System.Windows.Forms.Button buttonRandLinks;
+        private System.Windows.Forms.Button buttonRandRechts;
+        private System.Windows.Forms.Button buttonRandUnten;
+        private System.Windows.Forms.Button buttonRandOben;
     }
 }
