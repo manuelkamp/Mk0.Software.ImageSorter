@@ -60,7 +60,7 @@
             this.labelNoImages = new System.Windows.Forms.Label();
             this.groupBoxRander = new System.Windows.Forms.GroupBox();
             this.labelRander = new System.Windows.Forms.Label();
-            this.numericUpDownRander = new System.Windows.Forms.NumericUpDown();
+            this.trackBarRander = new System.Windows.Forms.TrackBar();
             this.buttonRandLinks = new System.Windows.Forms.Button();
             this.buttonRandRechts = new System.Windows.Forms.Button();
             this.buttonRandUnten = new System.Windows.Forms.Button();
@@ -86,7 +86,7 @@
             this.panelButtons.SuspendLayout();
             this.panelImageBackground.SuspendLayout();
             this.groupBoxRander.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRander)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarRander)).BeginInit();
             this.panelBanner.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBanner2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBanner1)).BeginInit();
@@ -425,14 +425,14 @@
             // 
             this.groupBoxRander.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBoxRander.Controls.Add(this.labelRander);
-            this.groupBoxRander.Controls.Add(this.numericUpDownRander);
+            this.groupBoxRander.Controls.Add(this.trackBarRander);
             this.groupBoxRander.Controls.Add(this.buttonRandLinks);
             this.groupBoxRander.Controls.Add(this.buttonRandRechts);
             this.groupBoxRander.Controls.Add(this.buttonRandUnten);
             this.groupBoxRander.Controls.Add(this.buttonRandOben);
-            this.groupBoxRander.Location = new System.Drawing.Point(428, 362);
+            this.groupBoxRander.Location = new System.Drawing.Point(428, 347);
             this.groupBoxRander.Name = "groupBoxRander";
-            this.groupBoxRander.Size = new System.Drawing.Size(109, 171);
+            this.groupBoxRander.Size = new System.Drawing.Size(109, 186);
             this.groupBoxRander.TabIndex = 18;
             this.groupBoxRander.TabStop = false;
             this.groupBoxRander.Text = "Ränder schneiden";
@@ -440,39 +440,30 @@
             // 
             // labelRander
             // 
+            this.labelRander.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelRander.AutoSize = true;
-            this.labelRander.Location = new System.Drawing.Point(53, 30);
+            this.labelRander.Location = new System.Drawing.Point(6, 52);
             this.labelRander.Name = "labelRander";
-            this.labelRander.Size = new System.Drawing.Size(21, 13);
+            this.labelRander.Size = new System.Drawing.Size(30, 13);
             this.labelRander.TabIndex = 12;
-            this.labelRander.Text = "px.";
+            this.labelRander.Text = "1 px.";
             // 
-            // numericUpDownRander
+            // trackBarRander
             // 
-            this.numericUpDownRander.Location = new System.Drawing.Point(6, 28);
-            this.numericUpDownRander.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDownRander.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownRander.Name = "numericUpDownRander";
-            this.numericUpDownRander.Size = new System.Drawing.Size(41, 20);
-            this.numericUpDownRander.TabIndex = 11;
-            this.numericUpDownRander.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.trackBarRander.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.trackBarRander.LargeChange = 1;
+            this.trackBarRander.Location = new System.Drawing.Point(6, 18);
+            this.trackBarRander.Minimum = 1;
+            this.trackBarRander.Name = "trackBarRander";
+            this.trackBarRander.Size = new System.Drawing.Size(95, 45);
+            this.trackBarRander.TabIndex = 13;
+            this.trackBarRander.Value = 1;
+            this.trackBarRander.Scroll += new System.EventHandler(this.TrackBarRander_Scroll);
             // 
             // buttonRandLinks
             // 
             this.buttonRandLinks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonRandLinks.Location = new System.Drawing.Point(6, 54);
+            this.buttonRandLinks.Location = new System.Drawing.Point(6, 69);
             this.buttonRandLinks.Name = "buttonRandLinks";
             this.buttonRandLinks.Size = new System.Drawing.Size(95, 23);
             this.buttonRandLinks.TabIndex = 7;
@@ -484,7 +475,7 @@
             // buttonRandRechts
             // 
             this.buttonRandRechts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonRandRechts.Location = new System.Drawing.Point(6, 83);
+            this.buttonRandRechts.Location = new System.Drawing.Point(6, 98);
             this.buttonRandRechts.Name = "buttonRandRechts";
             this.buttonRandRechts.Size = new System.Drawing.Size(95, 23);
             this.buttonRandRechts.TabIndex = 8;
@@ -496,7 +487,7 @@
             // buttonRandUnten
             // 
             this.buttonRandUnten.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonRandUnten.Location = new System.Drawing.Point(6, 141);
+            this.buttonRandUnten.Location = new System.Drawing.Point(6, 156);
             this.buttonRandUnten.Name = "buttonRandUnten";
             this.buttonRandUnten.Size = new System.Drawing.Size(95, 23);
             this.buttonRandUnten.TabIndex = 10;
@@ -508,7 +499,7 @@
             // buttonRandOben
             // 
             this.buttonRandOben.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonRandOben.Location = new System.Drawing.Point(6, 112);
+            this.buttonRandOben.Location = new System.Drawing.Point(6, 127);
             this.buttonRandOben.Name = "buttonRandOben";
             this.buttonRandOben.Size = new System.Drawing.Size(95, 23);
             this.buttonRandOben.TabIndex = 9;
@@ -693,7 +684,7 @@
             this.MinimumSize = new System.Drawing.Size(983, 605);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Image Sorter v1.40 | © 2015-2019 by manuelkamper.com";
+            this.Text = "Image Sorter v1.41 | © 2015-2019 by manuelkamper.com";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             this.Shown += new System.EventHandler(this.Main_Shown);
@@ -709,7 +700,7 @@
             this.panelImageBackground.ResumeLayout(false);
             this.groupBoxRander.ResumeLayout(false);
             this.groupBoxRander.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRander)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarRander)).EndInit();
             this.panelBanner.ResumeLayout(false);
             this.panelBanner.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBanner2)).EndInit();
@@ -766,10 +757,10 @@
         private System.Windows.Forms.Button buttonRander;
         private System.Windows.Forms.GroupBox groupBoxRander;
         private System.Windows.Forms.Label labelRander;
-        private System.Windows.Forms.NumericUpDown numericUpDownRander;
         private System.Windows.Forms.Button buttonRandLinks;
         private System.Windows.Forms.Button buttonRandRechts;
         private System.Windows.Forms.Button buttonRandUnten;
         private System.Windows.Forms.Button buttonRandOben;
+        private System.Windows.Forms.TrackBar trackBarRander;
     }
 }

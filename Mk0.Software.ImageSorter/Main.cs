@@ -130,11 +130,11 @@ namespace Mk0.Software.ImageSorter
             {
                 Width = Properties.Settings.Default.lastWidth;
             }
-            if (Properties.Settings.Default.lastTop <= Screen.PrimaryScreen.Bounds.Height)
+            if (Properties.Settings.Default.lastTop <= Screen.PrimaryScreen.Bounds.Height && Properties.Settings.Default.lastTop >= 0)
             {
                 Top = Properties.Settings.Default.lastTop;
             }
-            if (Properties.Settings.Default.lastLeft <= Screen.PrimaryScreen.Bounds.Width)
+            if (Properties.Settings.Default.lastLeft <= Screen.PrimaryScreen.Bounds.Width && Properties.Settings.Default.lastLeft >= 0)
             {
                 Left = Properties.Settings.Default.lastLeft;
             }
@@ -1463,7 +1463,7 @@ namespace Mk0.Software.ImageSorter
             string cutString = btn.Tag.ToString();
             Image im = pictureBoxImage.Image;
 
-            int move = (int)numericUpDownRander.Value;
+            int move = trackBarRander.Value;
             int x = 0, y = 0, width = im.Width, height = im.Height;
 
             if (cutString == "links")
@@ -1524,6 +1524,16 @@ namespace Mk0.Software.ImageSorter
             Bitmap bmpCrop = bmpImage.Clone(cropArea,
             bmpImage.PixelFormat);
             return (Image)(bmpCrop);
+        }
+
+        /// <summary>
+        /// Ändert das Pixel-Label auf den aktuellen Wert
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TrackBarRander_Scroll(object sender, EventArgs e)
+        {
+            labelRander.Text = trackBarRander.Value + " px.";
         }
     }
 }
