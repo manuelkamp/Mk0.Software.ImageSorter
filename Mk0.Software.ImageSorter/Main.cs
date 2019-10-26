@@ -83,6 +83,11 @@ namespace Mk0.Software.ImageSorter
                     SearchImages();
                     CountPicsInPath();
                     LoadPicture(GetImageIndex(Path.Combine(startuppath, startupimage)));
+                    if (WindowState != FormWindowState.Normal || WindowState != FormWindowState.Maximized)
+                    {
+                        WindowState = FormWindowState.Normal;
+                    }
+                    BringToFront();
                 }
             }
         }
