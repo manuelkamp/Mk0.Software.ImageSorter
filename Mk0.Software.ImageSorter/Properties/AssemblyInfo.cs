@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("manuelkamper.com")]
 [assembly: AssemblyProduct("ImageSorter")]
-[assembly: AssemblyCopyright("Copyright © 2015-2019 by manuelkamper.com")]
+[assembly: AssemblyCopyright("Copyright © 2015-2020 by manuelkamper.com")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // Sie können alle Werte angeben oder die standardmäßigen Build- und Revisionsnummern 
 // übernehmen, indem Sie "*" eingeben:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.42.*")]
+[assembly: AssemblyVersion("1.43.*")]
 //[assembly: AssemblyFileVersion("1.6.0.0")]

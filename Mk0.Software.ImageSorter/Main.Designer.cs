@@ -36,6 +36,7 @@
             this.toolStripMenuItemEditImage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemOpenExplorer = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemImageDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemShowEXIF = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonSettings = new System.Windows.Forms.Button();
             this.labelQuellPath = new System.Windows.Forms.Label();
             this.groupBoxInformationen = new System.Windows.Forms.GroupBox();
@@ -121,37 +122,45 @@
             this.toolStripMenuItemCropImage,
             this.toolStripMenuItemEditImage,
             this.toolStripMenuItemOpenExplorer,
-            this.toolStripMenuItemImageDetails});
+            this.toolStripMenuItemImageDetails,
+            this.toolStripMenuItemShowEXIF});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(196, 92);
+            this.contextMenuStrip.Size = new System.Drawing.Size(206, 114);
             // 
             // toolStripMenuItemCropImage
             // 
             this.toolStripMenuItemCropImage.Name = "toolStripMenuItemCropImage";
-            this.toolStripMenuItemCropImage.Size = new System.Drawing.Size(195, 22);
+            this.toolStripMenuItemCropImage.Size = new System.Drawing.Size(205, 22);
             this.toolStripMenuItemCropImage.Text = "Bild zuschneiden (F2)";
             this.toolStripMenuItemCropImage.Click += new System.EventHandler(this.BildZuschneidenToolStripMenuItem_Click);
             // 
             // toolStripMenuItemEditImage
             // 
             this.toolStripMenuItemEditImage.Name = "toolStripMenuItemEditImage";
-            this.toolStripMenuItemEditImage.Size = new System.Drawing.Size(195, 22);
+            this.toolStripMenuItemEditImage.Size = new System.Drawing.Size(205, 22);
             this.toolStripMenuItemEditImage.Text = "Bild bearbeiten (F3)";
             this.toolStripMenuItemEditImage.Click += new System.EventHandler(this.ToolStripMenuItemEditImage_Click);
             // 
             // toolStripMenuItemOpenExplorer
             // 
             this.toolStripMenuItemOpenExplorer.Name = "toolStripMenuItemOpenExplorer";
-            this.toolStripMenuItemOpenExplorer.Size = new System.Drawing.Size(195, 22);
+            this.toolStripMenuItemOpenExplorer.Size = new System.Drawing.Size(205, 22);
             this.toolStripMenuItemOpenExplorer.Text = "Speicherort öffnen (F4)";
             this.toolStripMenuItemOpenExplorer.Click += new System.EventHandler(this.ToolStripMenuItemOpenExplorer_Click);
             // 
             // toolStripMenuItemImageDetails
             // 
             this.toolStripMenuItemImageDetails.Name = "toolStripMenuItemImageDetails";
-            this.toolStripMenuItemImageDetails.Size = new System.Drawing.Size(195, 22);
+            this.toolStripMenuItemImageDetails.Size = new System.Drawing.Size(205, 22);
             this.toolStripMenuItemImageDetails.Text = "Bildeigenschaften (F5)";
             this.toolStripMenuItemImageDetails.Click += new System.EventHandler(this.ToolStripMenuItemImageDetails_Click);
+            // 
+            // toolStripMenuItemShowEXIF
+            // 
+            this.toolStripMenuItemShowEXIF.Name = "toolStripMenuItemShowEXIF";
+            this.toolStripMenuItemShowEXIF.Size = new System.Drawing.Size(205, 22);
+            this.toolStripMenuItemShowEXIF.Text = "EXIF-Daten anzeigen (F6)";
+            this.toolStripMenuItemShowEXIF.Click += new System.EventHandler(this.ToolStripMenuItemShowEXIF_Click);
             // 
             // buttonSettings
             // 
@@ -159,7 +168,7 @@
             this.buttonSettings.Location = new System.Drawing.Point(233, 16);
             this.buttonSettings.Name = "buttonSettings";
             this.buttonSettings.Size = new System.Drawing.Size(23, 23);
-            this.buttonSettings.TabIndex = 1;
+            this.buttonSettings.TabIndex = 7;
             this.buttonSettings.Text = "@";
             this.buttonSettings.UseVisualStyleBackColor = true;
             this.buttonSettings.Click += new System.EventHandler(this.ButtonSettings_Click);
@@ -213,7 +222,7 @@
             this.buttonQuellPfad.Location = new System.Drawing.Point(204, 16);
             this.buttonQuellPfad.Name = "buttonQuellPfad";
             this.buttonQuellPfad.Size = new System.Drawing.Size(23, 23);
-            this.buttonQuellPfad.TabIndex = 4;
+            this.buttonQuellPfad.TabIndex = 6;
             this.buttonQuellPfad.Text = "1";
             this.buttonQuellPfad.UseVisualStyleBackColor = true;
             this.buttonQuellPfad.Click += new System.EventHandler(this.ButtonQuellPfad_Click);
@@ -243,7 +252,7 @@
             this.buttonLastImage.Location = new System.Drawing.Point(105, 16);
             this.buttonLastImage.Name = "buttonLastImage";
             this.buttonLastImage.Size = new System.Drawing.Size(23, 23);
-            this.buttonLastImage.TabIndex = 9;
+            this.buttonLastImage.TabIndex = 4;
             this.buttonLastImage.Text = "I";
             this.buttonLastImage.UseVisualStyleBackColor = true;
             this.buttonLastImage.Visible = false;
@@ -256,7 +265,7 @@
             this.buttonInfo.Location = new System.Drawing.Point(175, 16);
             this.buttonInfo.Name = "buttonInfo";
             this.buttonInfo.Size = new System.Drawing.Size(23, 23);
-            this.buttonInfo.TabIndex = 8;
+            this.buttonInfo.TabIndex = 5;
             this.buttonInfo.Text = "i";
             this.buttonInfo.UseVisualStyleBackColor = true;
             this.buttonInfo.Click += new System.EventHandler(this.ButtonInfo_Click);
@@ -267,7 +276,7 @@
             this.buttonJumpBack.Location = new System.Drawing.Point(6, 16);
             this.buttonJumpBack.Name = "buttonJumpBack";
             this.buttonJumpBack.Size = new System.Drawing.Size(23, 23);
-            this.buttonJumpBack.TabIndex = 7;
+            this.buttonJumpBack.TabIndex = 1;
             this.buttonJumpBack.Text = "ç";
             this.buttonJumpBack.UseVisualStyleBackColor = true;
             this.buttonJumpBack.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ButtonJumpBack_Click);
@@ -304,7 +313,7 @@
             this.buttonJumpForward.Location = new System.Drawing.Point(35, 16);
             this.buttonJumpForward.Name = "buttonJumpForward";
             this.buttonJumpForward.Size = new System.Drawing.Size(23, 23);
-            this.buttonJumpForward.TabIndex = 1;
+            this.buttonJumpForward.TabIndex = 2;
             this.buttonJumpForward.Text = "è";
             this.buttonJumpForward.UseVisualStyleBackColor = true;
             this.buttonJumpForward.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ButtonJumpForward_Click);
@@ -316,7 +325,7 @@
             this.buttonUndo.Location = new System.Drawing.Point(64, 16);
             this.buttonUndo.Name = "buttonUndo";
             this.buttonUndo.Size = new System.Drawing.Size(23, 23);
-            this.buttonUndo.TabIndex = 2;
+            this.buttonUndo.TabIndex = 3;
             this.buttonUndo.Text = "Õ";
             this.buttonUndo.UseVisualStyleBackColor = true;
             this.buttonUndo.Click += new System.EventHandler(this.ButtonUndo_Click);
@@ -327,7 +336,7 @@
             this.buttonDeleteImage.Location = new System.Drawing.Point(6, 538);
             this.buttonDeleteImage.Name = "buttonDeleteImage";
             this.buttonDeleteImage.Size = new System.Drawing.Size(95, 23);
-            this.buttonDeleteImage.TabIndex = 5;
+            this.buttonDeleteImage.TabIndex = 10;
             this.buttonDeleteImage.Text = "Löschen";
             this.buttonDeleteImage.UseVisualStyleBackColor = true;
             this.buttonDeleteImage.Click += new System.EventHandler(this.ImageDelete);
@@ -602,7 +611,7 @@
             this.buttonDuplicate.Location = new System.Drawing.Point(220, 538);
             this.buttonDuplicate.Name = "buttonDuplicate";
             this.buttonDuplicate.Size = new System.Drawing.Size(95, 23);
-            this.buttonDuplicate.TabIndex = 16;
+            this.buttonDuplicate.TabIndex = 12;
             this.buttonDuplicate.Tag = "";
             this.buttonDuplicate.Text = "Duplizieren";
             this.buttonDuplicate.UseVisualStyleBackColor = true;
@@ -630,7 +639,7 @@
             this.buttonTransformation.Location = new System.Drawing.Point(113, 538);
             this.buttonTransformation.Name = "buttonTransformation";
             this.buttonTransformation.Size = new System.Drawing.Size(95, 23);
-            this.buttonTransformation.TabIndex = 18;
+            this.buttonTransformation.TabIndex = 11;
             this.buttonTransformation.Tag = "";
             this.buttonTransformation.Text = "Transformation";
             this.buttonTransformation.UseVisualStyleBackColor = true;
@@ -642,7 +651,7 @@
             this.buttonHintergrund.Location = new System.Drawing.Point(327, 538);
             this.buttonHintergrund.Name = "buttonHintergrund";
             this.buttonHintergrund.Size = new System.Drawing.Size(95, 23);
-            this.buttonHintergrund.TabIndex = 19;
+            this.buttonHintergrund.TabIndex = 13;
             this.buttonHintergrund.Tag = "";
             this.buttonHintergrund.Text = "hell/dunkel";
             this.buttonHintergrund.UseVisualStyleBackColor = true;
@@ -654,7 +663,7 @@
             this.buttonRander.Location = new System.Drawing.Point(434, 538);
             this.buttonRander.Name = "buttonRander";
             this.buttonRander.Size = new System.Drawing.Size(95, 23);
-            this.buttonRander.TabIndex = 20;
+            this.buttonRander.TabIndex = 14;
             this.buttonRander.Tag = "";
             this.buttonRander.Text = "Ränder";
             this.buttonRander.UseVisualStyleBackColor = true;
@@ -684,7 +693,7 @@
             this.MinimumSize = new System.Drawing.Size(983, 605);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Image Sorter v1.42 | © 2015-2019 by manuelkamper.com";
+            this.Text = "Image Sorter v1.43 | © 2015-2020 by manuelkamper.com";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             this.Shown += new System.EventHandler(this.Main_Shown);
@@ -762,5 +771,6 @@
         private System.Windows.Forms.Button buttonRandUnten;
         private System.Windows.Forms.Button buttonRandOben;
         private System.Windows.Forms.TrackBar trackBarRander;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemShowEXIF;
     }
 }

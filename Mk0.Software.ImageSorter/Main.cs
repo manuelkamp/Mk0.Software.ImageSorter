@@ -620,7 +620,7 @@ namespace Mk0.Software.ImageSorter
                         var result = form.ShowDialog();
                         if (result == DialogResult.Yes)
                         {
-                            fullTargetPath = Path.Combine(targetPath, Path.GetFileNameWithoutExtension(pictureBoxImage.ImageLocation) + Randomize.NumberAndDigits(5, "_") + Path.GetExtension(pictureBoxImage.ImageLocation));
+                            fullTargetPath = Path.Combine(targetPath, Path.GetFileNameWithoutExtension(pictureBoxImage.ImageLocation) + Randomize.NumbersAndDigits(5, "_") + Path.GetExtension(pictureBoxImage.ImageLocation));
                         }
                         else if (result == DialogResult.No)
                         {
@@ -1060,7 +1060,7 @@ namespace Mk0.Software.ImageSorter
         }
 
         /// <summary>
-        /// Öffnet im Explorer den Ordner des Bildes
+        /// Öffnet im Explorer den Ordner des Bildes und legt den Fokus auf das aktuelle Bild, wenn es existiert
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1078,7 +1078,7 @@ namespace Mk0.Software.ImageSorter
         }
 
         /// <summary>
-        /// Zeigt Details zum Bild an
+        /// Zeigt Details (Eigenschaften) zum aktuellen Bild an
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1099,6 +1099,20 @@ namespace Mk0.Software.ImageSorter
                                 "Auflösung: " + Resolution.GetImageResolution(img) + Environment.NewLine +
                                 "Größe: " + FileSize.GetFileSize(info.Length) + Environment.NewLine +
                                 "Bittiefe: " + Image.GetPixelFormatSize(img.PixelFormat) + " bit", "Bildeigenschaften", MessageBoxButtons.OK);
+            }
+        }
+
+        /// <summary>
+        /// Zeigt die EXIF-Daten vom aktuellen Bild an
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemShowEXIF_Click(object sender, EventArgs e)
+        {
+            using (Image img = Image.FromFile(pictureBoxImage.ImageLocation))
+            {
+                EXIF exif = new EXIF(img.PropertyItems);
+                exif.ShowDialog();
             }
         }
 
@@ -1144,16 +1158,12 @@ namespace Mk0.Software.ImageSorter
         }
 
         /// <summary>
-        /// Temporäre Dateien beim Beenden löschen
+        /// Größe, Position in Settings speichern vor dem Schließen
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (Directory.Exists("C:/img-tmp"))
-            {
-                Directory.Delete("C:/img-tmp", true);
-            }
             Properties.Settings.Default.lastPath = quellPath;
             Properties.Settings.Default.lastWidth = Width;
             Properties.Settings.Default.lastHeight = Height;
@@ -1287,6 +1297,12 @@ namespace Mk0.Software.ImageSorter
                 e.Handled = true;
             }
 
+            if (e.KeyCode == Keys.F6)
+            {
+                toolStripMenuItemShowEXIF.PerformClick();
+                e.Handled = true;
+            }
+
             if (e.KeyCode == Keys.Back)
             {
                 buttonUndo.PerformClick();
@@ -1406,7 +1422,7 @@ namespace Mk0.Software.ImageSorter
         private void ButtonDuplicate_Click(object sender, EventArgs e)
         {
             //aktuelles bild kopieren
-            string targetPath = Path.Combine(Path.GetDirectoryName(pictureBoxImage.ImageLocation), Path.GetFileNameWithoutExtension(pictureBoxImage.ImageLocation) + Randomize.NumberAndDigits(5, "_") + Path.GetExtension(pictureBoxImage.ImageLocation));
+            string targetPath = Path.Combine(Path.GetDirectoryName(pictureBoxImage.ImageLocation), Path.GetFileNameWithoutExtension(pictureBoxImage.ImageLocation) + Randomize.NumbersAndDigits(5, "_") + Path.GetExtension(pictureBoxImage.ImageLocation));
             File.Copy(pictureBoxImage.ImageLocation, targetPath, true);
 
             //duplikat als nächstes bild in liste aufnehmen

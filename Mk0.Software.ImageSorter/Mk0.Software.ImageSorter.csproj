@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Mk0.Software.ImageSorter</RootNamespace>
     <AssemblyName>Image Sorter</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <SccProjectName>Svn</SccProjectName>
@@ -33,7 +33,7 @@
     <PublisherName>manuelkamper.com</PublisherName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.42.0.0</ApplicationVersion>
+    <ApplicationVersion>1.43.0.0</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <ExcludeDeploymentUrl>true</ExcludeDeploymentUrl>
@@ -77,24 +77,19 @@
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Mk0.GUI.Banner, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\Mk0.Tools.Password\Mk0.Tools.Password\Mk0.Tools.Password\mk0.gui.banner.1.0.0\lib\net461\Mk0.GUI.Banner.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\mk0.gui.banner.1.0.0\lib\net461\Mk0.GUI.Banner.dll</HintPath>
     </Reference>
     <Reference Include="Mk0.Tools.Calculation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\Mk0.Tools.Password\Mk0.Tools.Password\Mk0.Tools.Password\mk0.tools.calculation.1.0.0\lib\net461\Mk0.Tools.Calculation.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\mk0.tools.calculation.1.0.0\lib\net461\Mk0.Tools.Calculation.dll</HintPath>
     </Reference>
     <Reference Include="Mk0.Tools.ImageCropper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\Mk0.Tools.Password\Mk0.Tools.Password\Mk0.Tools.Password\mk0.tools.imagecropper.1.0.0\lib\net461\Mk0.Tools.ImageCropper.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\mk0.tools.imagecropper.1.0.0\lib\net461\Mk0.Tools.ImageCropper.dll</HintPath>
     </Reference>
-    <Reference Include="Mk0.Tools.Images, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\Mk0.Tools.Password\Mk0.Tools.Password\Mk0.Tools.Password\mk0.tools.images.1.0.0\lib\net461\Mk0.Tools.Images.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Mk0.Tools.Images, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\mk0.tools.images.1.0.4\lib\net461\Mk0.Tools.Images.dll</HintPath>
     </Reference>
     <Reference Include="Mk0.Tools.Randomization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\Mk0.Tools.Password\Mk0.Tools.Password\Mk0.Tools.Password\mk0.tools.randomization.1.0.0\lib\net461\Mk0.Tools.Randomization.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\mk0.tools.randomization.1.0.0\lib\net461\Mk0.Tools.Randomization.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -103,6 +98,7 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cropper.cs">
@@ -110,6 +106,12 @@
     </Compile>
     <Compile Include="Cropper.Designer.cs">
       <DependentUpon>Cropper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EXIF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EXIF.Designer.cs">
+      <DependentUpon>EXIF.cs</DependentUpon>
     </Compile>
     <Compile Include="FileAssociation.cs" />
     <Compile Include="Main.cs">
@@ -134,6 +136,9 @@
     </Compile>
     <EmbeddedResource Include="Cropper.resx">
       <DependentUpon>Cropper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EXIF.resx">
+      <DependentUpon>EXIF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -169,11 +174,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="dll\Mk0.GUI.Banner.dll" />
-    <Content Include="dll\Mk0.Tools.Calculation.dll" />
-    <Content Include="dll\Mk0.Tools.ImageCropper.dll" />
-    <Content Include="dll\Mk0.Tools.Images.dll" />
-    <Content Include="dll\Mk0.Tools.Randomization.dll" />
     <Content Include="Resources\bmp.ico" />
     <None Include="Resources\duplicate.png" />
     <Content Include="Resources\gif.ico" />
