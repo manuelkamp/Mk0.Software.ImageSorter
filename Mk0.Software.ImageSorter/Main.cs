@@ -15,6 +15,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using Mk0.Software.OnlineUpdater;
 
 namespace Mk0.Software.ImageSorter
 {
@@ -78,6 +79,10 @@ namespace Mk0.Software.ImageSorter
                 ProcessParameters(null, Args);
                 Args = null;
             }
+
+            AutoUpdater.ShowSkipButton = false;
+            AutoUpdater.AppTitle = "My Custom Application Title";
+            AutoUpdater.Start("https://software.mk0.at/update/imagesorter.xml");
         }
 
         public delegate void ProcessParametersDelegate(object sender, string[] args);
