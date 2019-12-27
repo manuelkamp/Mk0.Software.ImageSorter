@@ -81,7 +81,6 @@ namespace Mk0.Software.ImageSorter
             }
 
             AutoUpdater.ShowSkipButton = false;
-            AutoUpdater.AppTitle = "My Custom Application Title";
             AutoUpdater.Start("https://software.mk0.at/update/imagesorter.xml");
         }
 
