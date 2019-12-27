@@ -53,7 +53,22 @@ namespace Mk0.Software.ImageSorter
             SetDefaultPath();
             comboBoxZoom.SelectedIndex = Properties.Settings.Default.zoom;
 
-            //todo file assoc prüfen und in einstellungen richtig setzen
+            //file assoc prüfen und in einstellungen richtig setzen
+            if(FileAssociation.Check("Image_Sorter_JPG", Application.ExecutablePath, "JPG Bild", $@"{Application.StartupPath}\AssocIcons\jpg.ico") && 
+                FileAssociation.Check("Image_Sorter_PNG", Application.ExecutablePath, "PNG Bild", $@"{Application.StartupPath}\AssocIcons\png.ico") &&
+                FileAssociation.Check("Image_Sorter_GIF", Application.ExecutablePath, "GIF Bild", $@"{Application.StartupPath}\AssocIcons\gif.ico") &&
+                FileAssociation.Check("Image_Sorter_JPEG", Application.ExecutablePath, "JPEG Bild", $@"{Application.StartupPath}\AssocIcons\jpeg.ico") &&
+                FileAssociation.Check("Image_Sorter_BMP", Application.ExecutablePath, "BMP Bild", $@"{Application.StartupPath}\AssocIcons\bmp.ico") &&
+                FileAssociation.Check("Image_Sorter_TIF", Application.ExecutablePath, "TIF Bild", $@"{Application.StartupPath}\AssocIcons\tif.ico") &&
+                FileAssociation.Check("Image_Sorter_TIFF", Application.ExecutablePath, "TIFF Bild", $@"{Application.StartupPath}\AssocIcons\tiff.ico"))
+            {
+                Properties.Settings.Default.fileAssociation = true;
+            }
+            else
+            {
+                Properties.Settings.Default.fileAssociation = false;
+            }
+            Properties.Settings.Default.Save();
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -399,13 +414,13 @@ namespace Mk0.Software.ImageSorter
                 if(Directory.Exists($@"{Application.StartupPath}\AssocIcons"))
                 {
                     Directory.Delete($@"{Application.StartupPath}\AssocIcons", true);
-                    FileAssociation.Remove("Image_Sorter_JPG", ".jpg", Application.ExecutablePath, "JPG Bild", $@"{Application.StartupPath}\AssocIcons\jpg.ico");
-                    FileAssociation.Remove("Image_Sorter_PNG", ".png", Application.ExecutablePath, "PNG Bild", $@"{Application.StartupPath}\AssocIcons\png.ico");
-                    FileAssociation.Remove("Image_Sorter_GIF", ".gif", Application.ExecutablePath, "GIF Bild", $@"{Application.StartupPath}\AssocIcons\gif.ico");
-                    FileAssociation.Remove("Image_Sorter_JPEG", ".jpeg", Application.ExecutablePath, "JPEG Bild", $@"{Application.StartupPath}\AssocIcons\jpeg.ico");
-                    FileAssociation.Remove("Image_Sorter_BMP", ".bmp", Application.ExecutablePath, "BMP Bild", $@"{Application.StartupPath}\AssocIcons\bmp.ico");
-                    FileAssociation.Remove("Image_Sorter_TIF", ".tif", Application.ExecutablePath, "TIF Bild", $@"{Application.StartupPath}\AssocIcons\tif.ico");
-                    FileAssociation.Remove("Image_Sorter_TIFF", ".tiff", Application.ExecutablePath, "TIFF Bild", $@"{Application.StartupPath}\AssocIcons\tiff.ico");
+                    FileAssociation.Remove("Image_Sorter_JPG");
+                    FileAssociation.Remove("Image_Sorter_PNG");
+                    FileAssociation.Remove("Image_Sorter_GIF");
+                    FileAssociation.Remove("Image_Sorter_JPEG");
+                    FileAssociation.Remove("Image_Sorter_BMP");
+                    FileAssociation.Remove("Image_Sorter_TIF");
+                    FileAssociation.Remove("Image_Sorter_TIFF");
                 }
             }
 
