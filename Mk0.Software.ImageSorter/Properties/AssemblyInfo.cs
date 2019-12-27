@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Image Sorter")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("manuelkamper.com")]
+[assembly: AssemblyCompany("mk0.at")]
 [assembly: AssemblyProduct("ImageSorter")]
-[assembly: AssemblyCopyright("Copyright © 2015-2020 by manuelkamper.com")]
+[assembly: AssemblyCopyright("Copyright © 2015-2020 by mk0.at")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
