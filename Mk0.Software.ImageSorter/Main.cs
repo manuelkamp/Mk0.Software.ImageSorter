@@ -146,21 +146,28 @@ namespace Mk0.Software.ImageSorter
         /// <param name="e"></param>
         private void Main_Shown(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.lastHeight >= MinimumSize.Height)
+            if (Properties.Settings.Default.fullScreen)
             {
-                Height = Properties.Settings.Default.lastHeight;
+                WindowState = FormWindowState.Maximized;
             }
-            if (Properties.Settings.Default.lastWidth >= MinimumSize.Width)
+            else
             {
-                Width = Properties.Settings.Default.lastWidth;
-            }
-            if (Properties.Settings.Default.lastTop <= Screen.PrimaryScreen.Bounds.Height && Properties.Settings.Default.lastTop >= 0)
-            {
-                Top = Properties.Settings.Default.lastTop;
-            }
-            if (Properties.Settings.Default.lastLeft <= Screen.PrimaryScreen.Bounds.Width && Properties.Settings.Default.lastLeft >= 0)
-            {
-                Left = Properties.Settings.Default.lastLeft;
+                if (Properties.Settings.Default.lastHeight >= MinimumSize.Height)
+                {
+                    Height = Properties.Settings.Default.lastHeight;
+                }
+                if (Properties.Settings.Default.lastWidth >= MinimumSize.Width)
+                {
+                    Width = Properties.Settings.Default.lastWidth;
+                }
+                if (Properties.Settings.Default.lastTop <= Screen.PrimaryScreen.Bounds.Height && Properties.Settings.Default.lastTop >= 0)
+                {
+                    Top = Properties.Settings.Default.lastTop;
+                }
+                if (Properties.Settings.Default.lastLeft <= Screen.PrimaryScreen.Bounds.Width && Properties.Settings.Default.lastLeft >= 0)
+                {
+                    Left = Properties.Settings.Default.lastLeft;
+                }
             }
             groupBoxInformationen.Visible = Properties.Settings.Default.showInfo;
             if (!groupBoxInformationen.Visible)
@@ -1189,6 +1196,7 @@ namespace Mk0.Software.ImageSorter
             Properties.Settings.Default.lastTop = Top;
             Properties.Settings.Default.lastLeft = Left;
             Properties.Settings.Default.showInfo = groupBoxInformationen.Visible;
+            Properties.Settings.Default.fullScreen = (WindowState == FormWindowState.Maximized ? true : false);
             Properties.Settings.Default.Save();
         }
 

@@ -33,7 +33,7 @@
     <PublisherName>manuelkamper.com</PublisherName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.48.0.0</ApplicationVersion>
+    <ApplicationVersion>1.49.0.0</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <ExcludeDeploymentUrl>true</ExcludeDeploymentUrl>
@@ -79,6 +79,9 @@
     <Reference Include="Mk0.GUI.Banner, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\mk0.gui.banner.1.0.0\lib\net461\Mk0.GUI.Banner.dll</HintPath>
     </Reference>
+    <Reference Include="Mk0.Software.OnlineUpdater">
+      <HintPath>..\..\manuelkamp\Mk0.Software.OnlineUpdater\Mk0.Software.OnlineUpdater\bin\Debug\Mk0.Software.OnlineUpdater.dll</HintPath>
+    </Reference>
     <Reference Include="Mk0.Tools.Calculation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\mk0.tools.calculation.1.0.0\lib\net461\Mk0.Tools.Calculation.dll</HintPath>
     </Reference>
@@ -90,10 +93,6 @@
     </Reference>
     <Reference Include="Mk0.Tools.Randomization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\mk0.tools.randomization.1.0.0\lib\net461\Mk0.Tools.Randomization.dll</HintPath>
-    </Reference>
-    <Reference Include="OnlineUpdater, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Mk0.Software.OnlineUpdater\Mk0.Software.OnlineUpdater\bin\Debug\OnlineUpdater.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
