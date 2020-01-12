@@ -693,12 +693,12 @@
             this.MinimumSize = new System.Drawing.Size(983, 605);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Image Sorter v1.49 | © 2015-2020 by mk0.at";
+            this.Text = "Image Sorter v1.50 | © 2015-2020 by mk0.at";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             this.Shown += new System.EventHandler(this.Main_Shown);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_KeyDown);
-            this.Resize += new System.EventHandler(this.Main_ResizeEnd);
+            this.Resize += new System.EventHandler(this.Main_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).EndInit();
             this.contextMenuStrip.ResumeLayout(false);
             this.groupBoxInformationen.ResumeLayout(false);

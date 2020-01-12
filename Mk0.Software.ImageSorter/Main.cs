@@ -44,6 +44,7 @@ namespace Mk0.Software.ImageSorter
         private string startupimage;
         public string[] Args;
         private System.Timers.Timer t1 = new System.Timers.Timer(1200);
+        private FormWindowState lastState = FormWindowState.Minimized;
 
         public Main()
         {
@@ -104,9 +105,12 @@ namespace Mk0.Software.ImageSorter
                     LoadPicture(GetImageIndex(Path.Combine(startuppath, startupimage)));
                     if (WindowState != FormWindowState.Normal || WindowState != FormWindowState.Maximized)
                     {
-                        WindowState = FormWindowState.Normal;
+                        if (lastState != FormWindowState.Minimized) { WindowState = lastState; } else { WindowState = FormWindowState.Normal; }
                     }
+                    Activate();
                     BringToFront();
+                    TopMost = true;
+                    TopMost = false;
                 }
             }
         }
@@ -1258,8 +1262,12 @@ namespace Mk0.Software.ImageSorter
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Main_ResizeEnd(object sender, EventArgs e)
+        private void Main_Resize(object sender, EventArgs e)
         {
+            if (WindowState != FormWindowState.Minimized)
+            {
+                lastState = WindowState;
+            }
             try
             {
                 Zoom();
