@@ -45,6 +45,7 @@ namespace Mk0.Software.ImageSorter
         public string[] Args;
         private System.Timers.Timer t1 = new System.Timers.Timer(1200);
         private FormWindowState lastState = FormWindowState.Minimized;
+        private string defaultWindowName;
 
         public Main()
         {
@@ -80,6 +81,8 @@ namespace Mk0.Software.ImageSorter
                 ProcessParameters(null, Args);
                 Args = null;
             }
+
+            defaultWindowName = Text;
 
             AutoUpdater.ShowSkipButton = false;
             AutoUpdater.Start("https://software.mk0.at/update/imagesorter.xml");
@@ -572,10 +575,12 @@ namespace Mk0.Software.ImageSorter
                     imageIndex = 0;
                 }
                 pictureBoxImage.ImageLocation = CropImageBorders(images.ElementAt(imageIndex));
+                Text = defaultWindowName + " - " + Path.GetFileName(pictureBoxImage.ImageLocation);
             }
             else
             {
                 pictureBoxImage.Image = null;
+                Text = defaultWindowName;
             }
         }
 

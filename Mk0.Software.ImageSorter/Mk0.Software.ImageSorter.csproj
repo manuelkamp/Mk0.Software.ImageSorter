@@ -33,7 +33,7 @@
     <PublisherName>manuelkamper.com</PublisherName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.50.0.0</ApplicationVersion>
+    <ApplicationVersion>1.51.0.0</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <ExcludeDeploymentUrl>true</ExcludeDeploymentUrl>
@@ -77,22 +77,22 @@
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Mk0.GUI.Banner, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\mk0.gui.banner.1.0.0\lib\net461\Mk0.GUI.Banner.dll</HintPath>
+      <HintPath>..\..\..\Mk0.Tools.Password\Mk0.Tools.Password\Mk0.Tools.Password\mk0.gui.banner.1.0.0\lib\net461\Mk0.GUI.Banner.dll</HintPath>
     </Reference>
     <Reference Include="Mk0.Software.OnlineUpdater">
-      <HintPath>..\..\manuelkamp\Mk0.Software.OnlineUpdater\Mk0.Software.OnlineUpdater\bin\Debug\Mk0.Software.OnlineUpdater.dll</HintPath>
+      <HintPath>..\..\Mk0.Software.OnlineUpdater\Mk0.Software.OnlineUpdater\bin\Debug\Mk0.Software.OnlineUpdater.dll</HintPath>
     </Reference>
     <Reference Include="Mk0.Tools.Calculation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\mk0.tools.calculation.1.0.0\lib\net461\Mk0.Tools.Calculation.dll</HintPath>
+      <HintPath>..\..\..\Mk0.Tools.Password\Mk0.Tools.Password\Mk0.Tools.Password\mk0.tools.calculation.1.0.0\lib\net461\Mk0.Tools.Calculation.dll</HintPath>
     </Reference>
     <Reference Include="Mk0.Tools.ImageCropper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\mk0.tools.imagecropper.1.0.0\lib\net461\Mk0.Tools.ImageCropper.dll</HintPath>
+      <HintPath>..\..\..\Mk0.Tools.Password\Mk0.Tools.Password\Mk0.Tools.Password\mk0.tools.imagecropper.1.0.0\lib\net461\Mk0.Tools.ImageCropper.dll</HintPath>
     </Reference>
     <Reference Include="Mk0.Tools.Images, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\mk0.tools.images.1.0.4\lib\net461\Mk0.Tools.Images.dll</HintPath>
+      <HintPath>..\..\..\Mk0.Tools.Password\Mk0.Tools.Password\Mk0.Tools.Password\mk0.tools.images.1.0.4\lib\net461\Mk0.Tools.Images.dll</HintPath>
     </Reference>
     <Reference Include="Mk0.Tools.Randomization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\mk0.tools.randomization.1.0.0\lib\net461\Mk0.Tools.Randomization.dll</HintPath>
+      <HintPath>..\..\..\Mk0.Tools.Password\Mk0.Tools.Password\Mk0.Tools.Password\mk0.tools.randomization.1.0.0\lib\net461\Mk0.Tools.Randomization.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
