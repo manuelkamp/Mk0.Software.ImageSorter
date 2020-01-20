@@ -50,6 +50,7 @@ namespace Mk0.Software.ImageSorter
         public Main()
         {
             InitializeComponent();
+            defaultWindowName = Text;
             banner = new Banner(components, panelBanner, pictureBoxBanner1, pictureBoxBanner2, labelBanner1, labelBanner2);
             pictureBoxImage.Cursor = grabCursor;
             DoubleBuffered = true;
@@ -81,9 +82,7 @@ namespace Mk0.Software.ImageSorter
                 ProcessParameters(null, Args);
                 Args = null;
             }
-
-            defaultWindowName = Text;
-
+            
             AutoUpdater.ShowSkipButton = false;
             AutoUpdater.Start("https://software.mk0.at/update/imagesorter.xml");
         }
