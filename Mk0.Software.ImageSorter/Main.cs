@@ -470,8 +470,7 @@ namespace Mk0.Software.ImageSorter
         /// <returns></returns>
         private int GetImageIndex(string image)
         {
-            int index = 0;
-            index = images.IndexOf(image);
+            int index = images.IndexOf(image);
             return index;
         }
 
@@ -645,16 +644,16 @@ namespace Mk0.Software.ImageSorter
 
             try
             {
-                string fullTargetPath = Path.Combine(targetPath, Path.GetFileName(pictureBoxImage.ImageLocation));
+                string fullTargetPath = Path.Combine(targetPath, CleanFileName(Path.GetFileName(pictureBoxImage.ImageLocation)));
                 Image myImg = CopyImage.GetCopyImage(pictureBoxImage.ImageLocation);
                 if (File.Exists(fullTargetPath))
                 {
-                    using (var form = new Vergleicher("Das zu verschiebende Bild \"" + Path.GetFileName(pictureBoxImage.ImageLocation) + "\"" + "existiert im Zielverzeichnis \"" + btn.Text + "\" bereits." + Environment.NewLine + Environment.NewLine + "Soll eine Kopie angelegt werden? Nein überschreibt die Datei, Abbrechen bricht den Vorgang ab.", pictureBoxImage.ImageLocation, fullTargetPath))
+                    using (var form = new Vergleicher("Das zu verschiebende Bild \"" + CleanFileName(Path.GetFileName(pictureBoxImage.ImageLocation)) + "\"" + "existiert im Zielverzeichnis \"" + btn.Text + "\" bereits." + Environment.NewLine + Environment.NewLine + "Soll eine Kopie angelegt werden? Nein überschreibt die Datei, Abbrechen bricht den Vorgang ab.", pictureBoxImage.ImageLocation, fullTargetPath))
                     {
                         var result = form.ShowDialog();
                         if (result == DialogResult.Yes)
                         {
-                            fullTargetPath = Path.Combine(targetPath, Path.GetFileNameWithoutExtension(pictureBoxImage.ImageLocation) + Randomize.NumbersAndDigits(5, "_") + Path.GetExtension(pictureBoxImage.ImageLocation));
+                            fullTargetPath = Path.Combine(targetPath, CleanFileName(Path.GetFileNameWithoutExtension(pictureBoxImage.ImageLocation)) + Randomize.NumbersAndDigits(5, "_") + Path.GetExtension(pictureBoxImage.ImageLocation));
                         }
                         else if (result == DialogResult.No)
                         {
@@ -701,6 +700,14 @@ namespace Mk0.Software.ImageSorter
                 t.Elapsed += new System.Timers.ElapsedEventHandler((sender1, e1) => ButtonBlink(sender, e, btn, t));
                 t.Start();
             }
+        }
+
+        private string CleanFileName(string filename)
+        {
+            string fn = filename;
+            fn = fn.Replace("_crp", "");
+            fn = fn.Replace("_cut", "");
+            return fn;
         }
 
         /// <summary>
@@ -1288,8 +1295,6 @@ namespace Mk0.Software.ImageSorter
         /// <param name="e"></param>
         private void Main_KeyDown(object sender, KeyEventArgs e)
         {
-            int x = e.KeyValue;
-
             if (e.KeyCode == Keys.Delete)
             {
                 buttonDeleteImage.PerformClick();
