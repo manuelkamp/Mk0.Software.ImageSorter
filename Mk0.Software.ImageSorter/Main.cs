@@ -84,7 +84,7 @@ namespace Mk0.Software.ImageSorter
             }
             
             AutoUpdater.ShowSkipButton = false;
-            AutoUpdater.Start("https://software.mk0.at/update/imagesorter.xml");
+            AutoUpdater.Start("https://www.kmpr.at/update/imagesorter.xml");
         }
 
         public delegate void ProcessParametersDelegate(object sender, string[] args);
