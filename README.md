@@ -33,4 +33,4 @@ This software has the following features:
   + F6 - show EXIF informations
   + BACKSPACE - undo last change
 
-Download of built executables: https://www.kmpr.at/software.php?id=8
+Download of built executables: [kmpr.at](https://www.kmpr.at/software.php?id=4)
