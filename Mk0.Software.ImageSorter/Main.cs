@@ -1352,6 +1352,18 @@ namespace Mk0.Software.ImageSorter
                 buttonUndo.PerformClick();
                 e.Handled = true;
             }
+
+            if (e.KeyCode == Keys.H)
+            {
+                buttonHintergrund.PerformClick();
+                e.Handled = true;
+            }
+
+            if (e.KeyCode == Keys.I)
+            {
+                buttonInfo.PerformClick();
+                e.Handled = true;
+            }
         }
 
         /// <summary>
